@@ -1,0 +1,12 @@
+copiar la carpeta del ejemplo en el workspace
+abrirlo en el visual donde tenemos el proyecto
+
+-Borrar los CP de ejemplo
+-Adaptar basic Cp (utiliza el hibertateHelper)
+-Copiar la ruta del hibernateHelper en el BasicCp
+
+-Cambiar el nombre a VacioCP (pej ClienteCP)
+-Cambiar el nombre de la clase y de los constructores
+
+
+-en el ejemplo crearClienteyPedido() el Código para llamar a cliente y a pedido se tealiza dentro de la compleja

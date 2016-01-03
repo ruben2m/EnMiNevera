@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="EnMiNeveraGenNHibernate"
+		                   namespace="EnMiNeveraGenNHibernate.EN.EnMiNevera">
+		    
+		    
+			
+				<class name="PasosEN" table="Pasos"> 
+				  	
+						<id name="Id" column="idPasos" type="integer"> 
+							<generator class="identity"/>
+						</id>
+			
+					
+					<property name="Descripcion" type="string"> 
+						<column name="descripcion"  not-null="true"/>
+					</property>
+					<property name="NumeroPaso" type="integer"> 
+						<column name="numeroPaso"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+		  			
+						<many-to-one name="Receta" class="EnMiNeveraGenNHibernate.EN.EnMiNevera.RecetaEN" >	
+								<column name="FK_idReceta_idReceta"/> 
+						</many-to-one>
+											 					
+			
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="PasosENReadAllHQL">from PasosEN</query>
+		</hibernate-mapping>
+	

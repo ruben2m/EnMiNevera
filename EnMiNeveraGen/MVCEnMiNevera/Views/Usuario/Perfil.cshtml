@@ -1,0 +1,120 @@
+﻿@model MVCEnMiNevera.Models.Usuario
+
+@{
+    ViewBag.Title = "Perfil";
+}
+
+<h2>Perfil</h2>
+
+<div>
+    <h4>Perfil de usuario</h4>
+    <hr />
+    <div class="content">
+        <div class="row">
+            <div class="col-lg-1 col-md-0"></div>
+            <div class="col-lg-1 col-md-3">
+                <div class="thumbnail">
+                    <img src="@Html.DisplayFor(model => model.Foto)" alt="@Html.DisplayFor(model => model.Nick)">
+                    <div class="caption">
+                        <h3>@Html.DisplayFor(model => model.Nick)</h3>
+                        <p>Seguidores: @ViewData["numSeguidores"]<br />
+                        Seguidos: @ViewData["numSeguidos"]</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-log-9 col-md-9">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#misRecetas" aria-controls="misRecetas" role="tab" data-toggle="tab">Mis recetas</a></li>
+                    <li role="presentation"><a href="#favoritos" aria-controls="favoritos" role="tab" data-toggle="tab">Favoritos</a></li>
+                    <li role="presentation"><a href="#seguidores" aria-controls="seguidores" role="tab" data-toggle="tab">Seguidores</a></li>
+                    <li role="presentation"><a href="#seguidos" aria-controls="seguidos" role="tab" data-toggle="tab">Seguidos</a></li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="misRecetas">
+                        <div class="row">
+                            @if (Model.Recetas.Any())
+                            {
+                                foreach (var item in Model.Recetas)
+                                {
+                                    <div class="col-lg-2 col-sm-4 col-xs-12">
+                                        <div class="thumbnail">
+                                            <img src="@Html.DisplayFor(modelItem => item.Foto)" alt="@Html.DisplayFor(model => item.Nombre)">
+                                            <div class="caption">
+                                                <h3>@Html.DisplayFor(model => item.Nombre)</h3>
+                                                <p>@Html.ActionLink("Ver receta", "../receta/ver", new { id = item.Id })</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="favoritos">
+                        <div class="row">
+                            @if (Model.RecetasFavoritas.Any())
+                            {
+                                foreach (var item in Model.RecetasFavoritas)
+                                {
+                                    <div class="col-lg-2 col-sm-4 col-xs-12">
+                                        <div class="thumbnail">
+                                            <img src="@Html.DisplayFor(modelItem => item.Foto)" alt="@Html.DisplayFor(model => item.Nombre)">
+                                            <div class="caption">
+                                                <h3>@Html.DisplayFor(model => item.Nombre)</h3>
+                                                <p>@Html.ActionLink("Ver receta", "../receta/ver", new { id = item.Id })</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="seguidores">
+                        <div class="row">
+                            @if (Model.Seguidores.Any())
+                            {
+                                foreach (var item in Model.Seguidores)
+                                {
+                                    <div class="col-lg-2 col-sm-4 col-xs-12">
+                                        <div class="thumbnail">
+                                            <img src="@Html.DisplayFor(modelItem => item.Foto)" alt="@Html.DisplayFor(model => item.Nick)">
+                                            <div class="caption">
+                                                <h3>@Html.DisplayFor(model => item.Nick)</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="seguidos">
+                        <div class="row">
+                            @if (Model.Seguidos.Any())
+                            {
+                                foreach (var item in Model.Seguidos)
+                                {
+                                    <div class="col-lg-2 col-sm-4 col-xs-12">
+                                        <div class="thumbnail">
+                                            <img src="@Html.DisplayFor(modelItem => item.Foto)" alt="@Html.DisplayFor(model => item.Nick)">
+                                            <div class="caption">
+                                                <h3>@Html.DisplayFor(model => item.Nick)</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-1 col-md-0"></div>
+            <script>
+                $('#myTabs a').click(function (e) {
+                    e.preventDefault()
+                    $(this).tab('show')
+                });
+            </script>
+        </div>
+    </div>
+</div>

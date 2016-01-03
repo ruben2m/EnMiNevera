@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="EnMiNeveraGenNHibernate"
+		                   namespace="EnMiNeveraGenNHibernate.EN.EnMiNevera">
+		    
+		    
+			
+				<class name="LineaListaCompraEN" table="LineaListaCompra"> 
+				  	
+						<id name="Id" column="idLineaListaCompra" type="integer"> 
+							<generator class="identity"/>
+						</id>
+			
+					
+					<property name="Cantidad" type="integer"> 
+						<column name="cantidad"  not-null="true"/>
+					</property>
+					<property name="Unidad" > 
+						<column name="unidad"  not-null="true"/>
+					</property>
+					<property name="Comprado" type="boolean"> 
+						<column name="comprado"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+		  			
+						<many-to-one name="Ingrediente" class="EnMiNeveraGenNHibernate.EN.EnMiNevera.IngredienteEN" >	
+								<column name="FK_idIngrediente_idIngrediente"/> 
+						</many-to-one>
+											 					
+			
+		  			
+						<many-to-one name="ListaCompra" class="EnMiNeveraGenNHibernate.EN.EnMiNevera.ListaCompraEN" >	
+								<column name="FK_idListaCompra_idListaCompra"/> 
+						</many-to-one>
+											 					
+			
+		  			
+						<many-to-one name="Receta" class="EnMiNeveraGenNHibernate.EN.EnMiNevera.RecetaEN" >	
+								<column name="FK_idReceta_idReceta"/> 
+						</many-to-one>
+											 					
+			
+					
+					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="LineaListaCompraENReadAllHQL">from LineaListaCompraEN</query>
+		</hibernate-mapping>
+	

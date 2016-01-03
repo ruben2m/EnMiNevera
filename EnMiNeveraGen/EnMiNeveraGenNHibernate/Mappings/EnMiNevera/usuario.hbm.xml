@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="EnMiNeveraGenNHibernate"
+		                   namespace="EnMiNeveraGenNHibernate.EN.EnMiNevera">
+		    
+		    
+			
+				<class name="UsuarioEN" table="usuario"> 
+				  	
+						<id name="Id" column="idUsuario" type="integer"> 
+							<generator class="identity"/>
+						</id>
+			
+					
+					<property name="Nombre" type="string"> 
+						<column name="nombre"  not-null="true"/>
+					</property>
+					<property name="Contrasena" type="string"> 
+						<column name="contrasena"  not-null="true"/>
+					</property>
+					<property name="Email" type="string"> 
+						<column name="email"  not-null="true"/>
+					</property>
+					<property name="Apellidos" type="string"> 
+						<column name="apellidos"  not-null="true"/>
+					</property>
+					<property name="Nick" type="string"> 
+						<column name="nick"  not-null="true"/>
+					</property>
+					<property name="Foto" type="string"> 
+						<column name="foto"  not-null="true"/>
+					</property>
+					<property name="Biografia" type="string"> 
+						<column name="biografia"  not-null="true"/>
+					</property>
+					<property name="FechaNacim" type="date"> 
+						<column name="fechaNacim"  not-null="true"/>
+					</property>
+					<property name="Baneado" type="boolean"> 
+						<column name="baneado"  not-null="true"/>
+					</property>
+					<property name="Rol" > 
+						<column name="rol"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		  			
+						<bag name="Recetas" >
+							<key>
+							
+								
+								<column name="FK_idUsuario_idUsuario"/>
+					      	</key>
+							<one-to-many class="EnMiNeveraGenNHibernate.EN.EnMiNevera.RecetaEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="Seguidores" table="[usuario_usuario_0]" inverse="true" >
+							<key>
+								
+									<column name="FK_idUsuario_idSeguidores"/> 
+							</key>
+      						<many-to-many class="EnMiNeveraGenNHibernate.EN.EnMiNevera.UsuarioEN">
+									<column name="FK_idUsuario_idSeguidos"/> 
+      						</many-to-many>
+    					</bag>
+			
+		  			
+						<bag name="Seguidos" table="[usuario_usuario_0]"  >
+							<key>
+								
+									<column name="FK_idUsuario_idSeguidos"/> 
+							</key>
+      						<many-to-many class="EnMiNeveraGenNHibernate.EN.EnMiNevera.UsuarioEN">
+									<column name="FK_idUsuario_idSeguidores"/> 
+      						</many-to-many>
+    					</bag>
+			
+		  			
+						<bag name="Comentarios" >
+							<key>
+							
+								
+								<column name="FK_idUsuario_idUsuario"/>
+					      	</key>
+							<one-to-many class="EnMiNeveraGenNHibernate.EN.EnMiNevera.ComentarioEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="Favoritos" table="[receta_0_usuario_0]" inverse="true" >
+							<key>
+								
+									<column name="FK_idUsuario_idUsuario_0"/> 
+							</key>
+      						<many-to-many class="EnMiNeveraGenNHibernate.EN.EnMiNevera.RecetaEN">
+									<column name="FK_idReceta_idReceta_0"/> 
+      						</many-to-many>
+    					</bag>
+			
+			
+			
+		  			
+						<bag name="ListasCompra" >
+							<key>
+							
+								
+								<column name="FK_idUsuario_idUsuario"/>
+					      	</key>
+							<one-to-many class="EnMiNeveraGenNHibernate.EN.EnMiNevera.ListaCompraEN"/>
+					    </bag>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="UsuarioENReadAllHQL">from UsuarioEN</query>
+		  <query name="UsuarioENverActividadSeguidosHQL"><![CDATA[FROM UsuarioEN]]></query>
+		  <query name="UsuarioENverNumSeguidoresHQL"><![CDATA[SELECT COUNT(se) FROM UsuarioEN us INNER JOIN us.Seguidores se WHERE se.Id = :p_oid]]></query>
+		  <query name="UsuarioENverNumSeguidosHQL"><![CDATA[SELECT COUNT(se) FROM UsuarioEN us INNER JOIN us.Seguidos se WHERE us.id = :p_oid]]></query>
+		</hibernate-mapping>
+	

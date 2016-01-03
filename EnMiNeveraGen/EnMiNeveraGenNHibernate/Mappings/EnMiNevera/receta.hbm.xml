@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="EnMiNeveraGenNHibernate"
+		                   namespace="EnMiNeveraGenNHibernate.EN.EnMiNevera">
+		    
+		    
+			
+				<class name="RecetaEN" table="Receta"> 
+				  	
+						<id name="Id" column="idReceta" type="integer"> 
+							<generator class="identity"/>
+						</id>
+			
+					
+					<property name="Nombre" type="string"> 
+						<column name="nombre"  not-null="true"/>
+					</property>
+					<property name="Descripcion" type="string"> 
+						<column name="descripcion"  not-null="true"/>
+					</property>
+					<property name="Foto" type="string"> 
+						<column name="foto"  not-null="true"/>
+					</property>
+					<property name="FechaCreacion" type="date"> 
+						<column name="fechaCreacion"  not-null="true"/>
+					</property>
+					<property name="Estado" > 
+						<column name="estado"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+			
+		  			
+						<many-to-one name="Usuario" class="EnMiNeveraGenNHibernate.EN.EnMiNevera.UsuarioEN" >	
+								<column name="FK_idUsuario_idUsuario"/> 
+						</many-to-one>
+											 					
+			
+		  			
+						<bag name="LineasIngrediente" cascade="delete">
+							<key>
+							
+								
+								<column name="FK_idReceta_idReceta"/>
+					      	</key>
+							<one-to-many class="EnMiNeveraGenNHibernate.EN.EnMiNevera.LineaIngredienteEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="Pasos" >
+							<key>
+							
+								
+								<column name="FK_idReceta_idReceta"/>
+					      	</key>
+							<one-to-many class="EnMiNeveraGenNHibernate.EN.EnMiNevera.PasosEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="LineasListaCompra" >
+							<key>
+							
+								
+								<column name="FK_idReceta_idReceta"/>
+					      	</key>
+							<one-to-many class="EnMiNeveraGenNHibernate.EN.EnMiNevera.LineaListaCompraEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="Comentarios" >
+							<key>
+							
+								
+								<column name="FK_idReceta_idReceta"/>
+					      	</key>
+							<one-to-many class="EnMiNeveraGenNHibernate.EN.EnMiNevera.ComentarioEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="UsuariosFavorito" table="[receta_0_usuario_0]"  >
+							<key>
+								
+									<column name="FK_idReceta_idReceta_0"/> 
+							</key>
+      						<many-to-many class="EnMiNeveraGenNHibernate.EN.EnMiNevera.UsuarioEN">
+									<column name="FK_idUsuario_idUsuario_0"/> 
+      						</many-to-many>
+    					</bag>
+			
+			
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="RecetaENReadAllHQL">from RecetaEN</query>
+		  <query name="RecetaENbuscarHQL"><![CDATA[FROM RecetaEN re WHERE re.Descripcion LIKE CONCAT( '%', :p_texto, '%') OR re.Nombre LIKE CONCAT('%', :p_texto, '%')]]></query>
+		  <query name="RecetaENbuscarPorIngredienteHQL"><![CDATA[SELECT re FROM RecetaEN re INNER JOIN re.LineasIngrediente lin INNER JOIN lin.Ingrediente ing WHERE ing.Id IN (:p_lista_ingredientes)]]></query>
+		  <query name="RecetaENverUltimasRecetasHQL"><![CDATA[FROM RecetaEN re ORDER BY re.FechaCreacion DESC]]></query>
+		</hibernate-mapping>
+	

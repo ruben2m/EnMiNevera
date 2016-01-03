@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="EnMiNeveraGenNHibernate"
+		                   namespace="EnMiNeveraGenNHibernate.EN.EnMiNevera">
+		    
+		    
+			
+				<class name="IngredienteEN" table="Ingrediente"> 
+				  	
+						<id name="Id" column="idIngrediente" type="integer"> 
+							<generator class="identity"/>
+						</id>
+			
+					
+					<property name="Nombre" type="string"> 
+						<column name="nombre"  unique="true" not-null="true"/>
+					</property>
+			
+			
+			
+			
+		  			
+						<bag name="LineasIngrediente" >
+							<key>
+							
+								
+								<column name="FK_idIngrediente_idIngrediente"/>
+					      	</key>
+							<one-to-many class="EnMiNeveraGenNHibernate.EN.EnMiNevera.LineaIngredienteEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="LineasListaCompra" >
+							<key>
+							
+								
+								<column name="FK_idIngrediente_idIngrediente"/>
+					      	</key>
+							<one-to-many class="EnMiNeveraGenNHibernate.EN.EnMiNevera.LineaListaCompraEN"/>
+					    </bag>
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="IngredienteENReadAllHQL">from IngredienteEN</query>
+		  <query name="IngredienteENverNubeIngredientesHQL"><![CDATA[SELECT ing, COUNT(lin) FROM IngredienteEN ing LEFT JOIN ing.LineasIngrediente lin GROUP BY ing.Id, ing.Nombre ORDER BY COUNT(lin) DESC]]></query>
+		  <query name="IngredienteENgetPorNombreHQL"><![CDATA[FROM IngredienteEN ing WHERE ing.Nombre = :p_nombre]]></query>
+		</hibernate-mapping>
+	

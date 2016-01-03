@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="EnMiNeveraGenNHibernate"
+		                   namespace="EnMiNeveraGenNHibernate.EN.EnMiNevera">
+		    
+		    
+			
+				<class name="ListaCompraEN" table="ListaCompra"> 
+				  	
+						<id name="Id" column="idListaCompra" type="integer"> 
+							<generator class="identity"/>
+						</id>
+			
+					
+					<property name="Nombre" type="string"> 
+						<column name="nombre"  not-null="true"/>
+					</property>
+					<property name="Fecha" type="date"> 
+						<column name="fecha"  not-null="true"/>
+					</property>
+			
+			
+			
+		  			
+						<bag name="LineasListaCompra" cascade="delete">
+							<key>
+							
+								
+								<column name="FK_idListaCompra_idListaCompra"/>
+					      	</key>
+							<one-to-many class="EnMiNeveraGenNHibernate.EN.EnMiNevera.LineaListaCompraEN"/>
+					    </bag>
+					
+			
+			
+			
+		  			
+						<many-to-one name="Usuario" class="EnMiNeveraGenNHibernate.EN.EnMiNevera.UsuarioEN" >	
+								<column name="FK_idUsuario_idUsuario"/> 
+						</many-to-one>
+											 					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="ListaCompraENReadAllHQL">from ListaCompraEN</query>
+		</hibernate-mapping>
+	

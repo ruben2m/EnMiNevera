@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="es.ua.dlsi.ooh.core.internal.launching.runGeneration">
+<booleanAttribute key="java_debug" value="false"/>
+<stringAttribute key="modelPathConceptualview" value="models/enminevera.domainModel"/>
+<stringAttribute key="modelPathNavigationalview" value="models/enminevera.navigationalModel"/>
+<stringAttribute key="modelPathPresentationView" value="models/enminevera.viewModel"/>
+<stringAttribute key="org.eclipse.debug.ui.ATTR_CAPTURE_IN_FILE" value="${workspace_loc:/EnMiNevera}/generator.log"/>
+<listAttribute key="org.eclipse.debug.ui.favoriteGroups">
+<listEntry value="org.eclipse.debug.ui.launchGroup.run"/>
+</listAttribute>
+<booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_START_ON_FIRST_THREAD" value="true"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="EnMiNevera"/>
+<booleanAttribute key="org.eclipse.jdt.launching.STOP_IN_MAIN" value="false"/>
+<stringAttribute key="startWorkflow" value=""/>
+<booleanAttribute key="targetProjectCreation" value="true"/>
+</launchConfiguration>

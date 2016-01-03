@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/estilo.css" type="text/css"> 
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+            data-target=".navbar-ex1-collapse">
+      <span class="sr-only">Desplegar navegación</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+                <a href="index.html"><img src="css/images/Logo.png" width="30px">Logotipo</a>
+            </div>
+          <div class="collapse navbar-collapse navbar-ex1-collapse">
+    
+            <form novalidate id="loginForm" class=" navbar-form navbar-right">
+                <input class="form-control" type="text" id="inputUser" placeholder="Usuario" required>
+                <input class="form-control" type="password" id="inputPsswd" placeholder="Contraseña" required>
+                <input class="btn btn-default" type="submit" value="Iniciar sesión">
+                <a href="#">Regístrate</a>
+            </form>  
+             
+          </div>
+          <div class="collapse navbar-collapse navbar-ex1-collapse">
+    <ul class="nav nav-pills nav-justified">
+      <li class="active"><a href="#">Inicio</a></li>
+      <li><a href="#">Actividad</a></li>
+        <li><a href="#">Recetas</a></li>
+    </ul>
+        
+        </div>
+      </nav>
+    <div class="row">
+        
+        <div class="col-md-4 col-md-push-1 col-xs-6 col-xs-offset-1">
+            <h2>Últimas recetas añadidas</h2>
+    <div class="input-group">
+      <input type="search" class="form-control" placeholder="Búsqueda">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Buscar</button>
+      </span>
+    </div>
+  </div>
+        <div class="col-md-3 col-md-push-5">
+            <p><button class="fa fa-plus-square fa-3x"></button></p>
+            <p>Añadir receta</p>
+        </div>
+    </div>
+    <div class="container">
+        <!--AQUÍ VA TODAS LAS ULTIMAS RECETAS-->
+    </div>
+     <!--FOOTER-->
+    <footer class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+   
+        <div class="navbar-text pull-left">
+            <div class="container">
+                <div class="col-md-3">
+                    <a href="#">Sobre nosotros</a>
+                </div>
+                <div class="col-md-3">
+                    <a href="#">Ayuda</a>
+                </div>   
+                <div class="col-md-3">
+                    <a href="#">Privacidad</a>
+                </div>
+                <div class="col-md-3">
+                    En Mi Nevera, 2015
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
