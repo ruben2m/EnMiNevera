@@ -1,22 +1,41 @@
 ﻿@model MVCEnMiNevera.Models.Receta
 @{
-    ViewBag.Title = "Ultimas recetas añadidas";
+    ViewBag.Title = "Ultimas recetas";
 }
 <div class="row">
     <div class="col-md-4 col-md-push-1 col-xs-6 col-xs-offset-1">
-        <h2>ViewBag.Title </h2>
+        <h2>Últimas recetas añadidas</h2>
         <div class="input-group">
             <input type="search" class="form-control" placeholder="Búsqueda">
             <span class="input-group-btn">
-                <button class="btn btn-default" type="button">Buscar</button>
+                <button class="btn btn-default" type="button">Buscar recetas</button>
             </span>
         </div>
     </div>
     <div class="col-md-3 col-md-push-5">
-        <p><button class="fa fa-plus-square fa-3x"></button></p>
+        <p><button class="fa fa-plus-square fa-3x">@Html.ActionLink(" ", "Crear", "Receta")</button></p>
         <p>Añadir receta</p>
     </div>
 </div>
 <div class="container">
     <!--AQUÍ VA TODAS LAS ULTIMAS RECETAS-->
+    <div class="col-md-2 col-sm-3 col-xs-12">
+        <table>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img height="60" width="100" src="@Html.DisplayFor(model => model.Foto)" alt="@Html.DisplayFor(model => model.Nombre)">
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Nombre)
+                        @Html.DisplayFor(Model => model.Descripcion)
+                    </td>
+                </tr>
+            }
+            
+        </table>
+    </div>
+</div>
+
 </div>
