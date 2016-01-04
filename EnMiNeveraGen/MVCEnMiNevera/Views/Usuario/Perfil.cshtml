@@ -19,6 +19,7 @@
                         <h3>@Html.DisplayFor(model => model.Nick)</h3>
                         <p>Seguidores: @ViewData["numSeguidores"]<br />
                         Seguidos: @ViewData["numSeguidos"]</p>
+                        @Html.ActionLink("Modificar", "../account/manage")
                     </div>
                 </div>
             </div>

@@ -42,7 +42,7 @@
                 @if (Request.IsAuthenticated)
                 {
                     <div class="navbar-form navbar-right">
-                        ¡Hola, @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Administrar" })!
+                        ¡Hola, @Html.ActionLink(User.Identity.Name, "perfil", "usuario", routeValues: null, htmlAttributes: new { @class = "username", title = "Administrar" })!
                         @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
                         {
                             @Html.AntiForgeryToken()
@@ -61,7 +61,7 @@
                         <div class="navbar-form navbar-right">
                             <input data-val="true" data-val-required="El campo Nombre de usuario es obligatorio." id="Nick" name="Nick" type="text" value="">
                             <span class="field-validation-valid" data-valmsg-for="Nick" data-valmsg-replace="true"></span>
-                            <input data-val="true" data-val-required="El campo Contraseña es obligatorio." id="Password" name="Password" type="text" value="">
+                            <input data-val="true" data-val-required="El campo Contraseña es obligatorio." id="Password" name="Password" type="password" value="">
                             <span class="field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="true"></span>
                             <input data-val="true" data-val-required="El campo ¿Recordar cuenta? es obligatorio." id="RememberMe" name="RememberMe" type="checkbox" value="true"><input name="RememberMe" type="hidden" value="false">
                             <label class="checkbox" for="RememberMe">¿Recordar cuenta?</label>

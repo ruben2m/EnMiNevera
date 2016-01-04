@@ -23,11 +23,11 @@ public int Login (string p_nick, string p_email, String p_contrasena)
         UsuarioCEN usuarioCen = new UsuarioCEN ();
         UsuarioEN usuarioEn = usuarioCen.GetByNick (p_nick);     // _IUsuarioCAD.ReadOIDDefault(p_oid);
 
-        if (usuarioEn.Contrasena.Equals (Utils.Util.GetEncondeMD5 (p_contrasena)))
+        if (usuarioEn != null && usuarioEn.Contrasena.Equals (Utils.Util.GetEncondeMD5 (p_contrasena)))
                 oid = usuarioEn.Id;
         else{
                 usuarioEn = usuarioCen.GetByEmail (p_email);
-                if (usuarioEn.Contrasena.Equals (Utils.Util.GetEncondeMD5 (p_contrasena)))
+                if (usuarioEn != null && usuarioEn.Contrasena.Equals (Utils.Util.GetEncondeMD5 (p_contrasena)))
                         oid = usuarioEn.Id;
         }
 

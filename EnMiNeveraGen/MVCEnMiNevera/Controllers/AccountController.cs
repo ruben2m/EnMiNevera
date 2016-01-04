@@ -47,6 +47,10 @@ namespace MVCEnMiNevera.Controllers
                 int id = cen.Login(model.Nick, model.Nick, model.Password);
                 if (id != -1)
                 {
+                    // Obtengo el nick, para trabajar con él, ya que puede haber logueado con nick o email
+                    // Siempre vamos a trabajar con el nick
+                    UsuarioEN en = new UsuarioCAD().ReadOIDDefault(id);
+                    model.Nick = en.Nick;
                     if(! WebSecurity.Login(model.Nick, model.Password, persistCookie: model.RememberMe))
                     {
                         WebSecurity.CreateUserAndAccount(model.Nick, model.Password);

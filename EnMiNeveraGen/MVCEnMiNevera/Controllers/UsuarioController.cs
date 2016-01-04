@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
+using WebMatrix.WebData;
 using System.IO;
 using MVCEnMiNevera.Models;
+using MVCEnMiNevera.Filters;
 using EnMiNeveraGenNHibernate.CAD.EnMiNevera;
 using EnMiNeveraGenNHibernate.CEN.EnMiNevera;
 using EnMiNeveraGenNHibernate.EN.EnMiNevera;
@@ -22,12 +25,15 @@ namespace MVCEnMiNevera.Controllers
 
         // GET: Usuario/Details/5
         [Authorize]
+        [InitializeSimpleMembership]
         public ActionResult Perfil()
         {
             SessionInitialize();
 
-            int id = 1; // TODO poner el id a currentUser
-            UsuarioEN en = new UsuarioCAD(session).ReadOIDDefault(id);
+            //int id = 1; // TODO poner el id a currentUser
+            //int id = WebSecurity.GetUserId(User.Identity.Name);
+            //UsuarioEN en = new UsuarioCAD(session).ReadOIDDefault(id);
+            UsuarioEN en = new UsuarioCAD(session).GetByNick(User.Identity.Name);
 
             Usuario usuario = new AssemblerUsuario().ConvertENToModelUI(en);
 
