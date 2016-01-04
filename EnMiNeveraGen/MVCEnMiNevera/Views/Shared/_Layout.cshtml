@@ -1,7 +1,4 @@
 ﻿@*@model MVCEnMiNevera.Models.LoginModel //Eso esta petando cuando accedes a un controlador que haga uso de otro modelo, habra que hacerlo de otra manera*@ 
-@{
-    ViewBag.Title = "Login";
-}
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,84 +23,82 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse"
-                        data-target=".navbar-ex1-collapse">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
                     <span class="sr-only">Desplegar navegación</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="@Url.Action("Index", "Home")"><img src="css/images/Logo.png" width="30px">Logotipo</a>
+                <a class="navbar-brand" href="@Url.Action("Index", "Home")"><img src="css/images/Logo.png" width="30px">Logotipo</a>
             </div>
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <div id="navbar" class="navbar-collapse collapse">
                 @if (Request.IsAuthenticated)
                 {
-                    <div class="navbar-form navbar-right">
-                        ¡Hola, @Html.ActionLink(User.Identity.Name, "perfil", "usuario", routeValues: null, htmlAttributes: new { @class = "username", title = "Administrar" })!
-                        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
-                        {
-                            @Html.AntiForgeryToken()
-                            <a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a>
-                        }
-
-                    </div>
+                    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { @id = "logoutForm", @class = "navbar-form navbar-right" }))
+                    {
+                        <span>¡Hola @Html.ActionLink(User.Identity.Name, "perfil", "usuario", routeValues: null, htmlAttributes: new { @class = "username", title = "Administrar" })!</span>
+                        @Html.AntiForgeryToken()
+                        <a href="javascript:document.getElementById('logoutForm').submit()">Salir</a>
+                    }
                 }
                 else
                 {
                     //using (Html.BeginForm(new { controller = "account", action = "login", ReturnUrl = ViewBag.ReturnUrl }))
-                    using (Html.BeginForm(new { controller = "account", action = "login", ReturnUrl = "/" }))
+                    using (Html.BeginForm("login", "account", FormMethod.Post, new { @id = "logoutForm", @class = "navbar-form navbar-right" }))
                     {
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary(true)
-                        <div class="navbar-form navbar-right">
-                            <input data-val="true" data-val-required="El campo Nombre de usuario es obligatorio." id="Nick" name="Nick" type="text" value="">
-                            <span class="field-validation-valid" data-valmsg-for="Nick" data-valmsg-replace="true"></span>
-                            <input data-val="true" data-val-required="El campo Contraseña es obligatorio." id="Password" name="Password" type="password" value="">
-                            <span class="field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="true"></span>
-                            <input data-val="true" data-val-required="El campo ¿Recordar cuenta? es obligatorio." id="RememberMe" name="RememberMe" type="checkbox" value="true"><input name="RememberMe" type="hidden" value="false">
-                            <label class="checkbox" for="RememberMe">¿Recordar cuenta?</label>
-                            @*@Html.TextBoxFor(m => m.Nick)
-                            @Html.ValidationMessageFor(m => m.Nick)
-                            @Html.TextBoxFor(m => m.Password)
-                            @Html.ValidationMessageFor(m => m.Password)
-                            @Html.CheckBoxFor(m => m.RememberMe)
-                            @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })*@
+                        <input data-val="true" data-val-required="El campo Nombre de usuario es obligatorio." id="Nick" name="Nick" type="text" value="">
+                        <span class="field-validation-valid" data-valmsg-for="Nick" data-valmsg-replace="true"></span>
+                        <input data-val="true" data-val-required="El campo Contraseña es obligatorio." id="Password" name="Password" type="password" value="">
+                        <span class="field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="true"></span>
+                        <input id="RememberMe" name="RememberMe" type="hidden" value="false">
+                        @*<input data-val="true" data-val-required="El campo ¿Recordar cuenta? es obligatorio." id="RememberMe" name="RememberMe" type="checkbox" value="true"><input name="RememberMe" type="hidden" value="false">
+                        <label class="checkbox" for="RememberMe">recordar</label>*@
+                        @*@Html.TextBoxFor(m => m.Nick)
+                        @Html.ValidationMessageFor(m => m.Nick)
+                        @Html.TextBoxFor(m => m.Password)
+                        @Html.ValidationMessageFor(m => m.Password)
+                        @Html.CheckBoxFor(m => m.RememberMe)
+                        @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })*@
 
-                            <input class="btn btn-default" type="submit" value="Iniciar sesión">
-                            <a href="@Url.Action("Register", "Account")">Regístrate</a>
-                        </div>
+                        <input class="btn btn-success" type="submit" value="Iniciar sesión">
+                        <a href="@Url.Action("Register", "Account")">Regístrate</a>
                     }
                 }
             </div>
-            
         </div>
-        
     </nav>
-    
-        @RenderBody()
-        
-        <footer class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
 
-            <div class="navbar-text pull-left">
-                <div class="container">
-                    <div class="col-md-3">
-                        <a href="#">Sobre nosotros</a>
-                    </div>
-                    <div class="col-md-3">
-                        <a href="#">Ayuda</a>
-                    </div>
-                    <div class="col-md-3">
-                        <a href="#">Privacidad</a>
-                    </div>
-                    <div class="col-md-3">
-                        En Mi Nevera, 2015
-                    </div>
-                </div>
+    <div class="container">
+        @RenderBody()
+    </div>
+    
+    @*<footer class="footer">
+        <div class="container">
+            <p class="text-muted">Place sticky footer content here.</p>
+        </div>
+    </footer>*@
+    @*<footer class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">*@
+    <footer class="footer">
+        <div class="container">
+            <div class="col-md-3">
+                <a href="#">Sobre nosotros</a>
             </div>
-        </footer>
+            <div class="col-md-3">
+                <a href="#">Ayuda</a>
+            </div>
+            <div class="col-md-3">
+                <a href="#">Privacidad</a>
+            </div>
+            <div class="col-md-3">
+                En Mi Nevera, 2015
+            </div>
+        </div>
+    </footer>
     
 
     @Scripts.Render("~/bundles/jquery")

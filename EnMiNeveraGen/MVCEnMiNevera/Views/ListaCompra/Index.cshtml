@@ -1,0 +1,72 @@
+﻿@model IEnumerable<MVCEnMiNevera.Models.ListaCompra>
+@{
+    ViewBag.Title = "Listas de la Compra";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <h3>Listas de la Compra</h3>
+        <hr />
+        @* Mostramos las listas de la compra con botones *@
+        <ul class="nav nav-pills" role="tablist">
+            @{
+                //string clase = "active";
+                string clase = "";
+                foreach (var item in Model)
+                {
+                    if (item.Id.CompareTo(ViewData["idListaActiva"]) == 0) { clase = "active"; } else { clase = ""; }
+                    <li role="presentation" class="@clase"><a href="#receta_@item.Id" aria-control="receta_@item.Id" role="tab" data-toggle="pill">@Html.DisplayFor(model => item.Nombre)</a></li>
+                }
+                <li role="presentation"><a href="/listacompra/create"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a></li>
+            }
+        </ul>
+
+        <div class="tab-content">
+            @{
+                string unidad = "";
+                foreach (var item in Model)
+                {
+                    if (item.Id.CompareTo(ViewData["idListaActiva"]) == 0) { clase = "active"; } else { clase = ""; }
+                    <div role="tabpanel" class="tab-pane fade in @clase" id="receta_@item.Id">
+                        <ul class="list-group">
+                            @foreach (var linea in item.LineasListaCompra)
+                            {
+                                switch (linea.Unidad)
+                                {
+                                    case EnMiNeveraGenNHibernate.Enumerated.EnMiNevera.UnidadesEnum.gramos:
+                                        unidad = "gr. de";
+                                        break;
+                                    case EnMiNeveraGenNHibernate.Enumerated.EnMiNevera.UnidadesEnum.mililitros:
+                                        unidad = "ml. de";
+                                        break;
+                                    case EnMiNeveraGenNHibernate.Enumerated.EnMiNevera.UnidadesEnum.unidades:
+                                        break;
+                                    default:
+                                        break;
+                                }
+                                <li class="list-group-item">
+                                    @Html.DisplayFor(model => linea.Cantidad) @unidad @Html.DisplayFor(model => linea.Ingrediente.Nombre)
+                                    <a href="/listacompra/check/@linea.Id"class="pull-right btn btn-default btn-xs" aria-label="Left Align">
+                                        @if (linea.Comprado)
+                                        {
+                                            <span class="glyphicon glyphicon-align-left glyphicon-check" aria-hidden="true"></span>
+                                        }
+                                        else
+                                        {
+                                            <span class="glyphicon glyphicon-align-left glyphicon-unchecked" aria-hidden="true"></span>
+                                        }
+                                    </a> 
+                                </li>
+                            }
+                            @* Linea de crear nueva linea *@
+                            <li class="list-group-item">
+                                @Html.ActionLink("Añadir ingrediente", "add")
+                            </li>
+                        </ul>
+                    </div>
+                    clase = "";
+                }
+            }
+        </div>
+    </div>
+</div>

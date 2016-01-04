@@ -40,10 +40,15 @@ namespace MVCEnMiNevera.Controllers
                 com.Usuario.Nick = com.Usuario.Nick;
             }
 
-            if (en.UsuariosFavorito.Contains(en.Usuario))
-                ViewData["esFavorito"] = "si";
-            else
-                ViewData["esFavorito"] = "no";
+            if (User.Identity.IsAuthenticated)
+            {
+                UsuarioEN usuarioEn = new UsuarioCAD(session).GetByNick(User.Identity.Name);
+                if (en.UsuariosFavorito.Contains(usuarioEn))
+                    ViewData["esFavorito"] = "si";
+                else
+                    ViewData["esFavorito"] = "no";
+            }
+
 
             SessionClose();
 
@@ -51,12 +56,18 @@ namespace MVCEnMiNevera.Controllers
         }
         
         // GET: Receta/Favorito/5
+        [Authorize]
         public ActionResult Favorito(int id)
         {
+            SessionInitialize();
 
-            int id_usuario = 1; // TODO cambiar por el usuario activo
+            UsuarioCAD usuarioCad = new UsuarioCAD(session);
 
-            new UsuarioCEN().GuardarFavorito(id_usuario, id);
+            UsuarioEN usuarioEn = usuarioCad.GetByNick(User.Identity.Name);
+
+            new UsuarioCEN(usuarioCad).GuardarFavorito(usuarioEn.Id, id);
+
+            SessionClose();
 
             return RedirectToAction("ver", new { id = id });
         }

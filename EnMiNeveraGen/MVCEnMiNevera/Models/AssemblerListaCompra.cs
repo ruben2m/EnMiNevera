@@ -11,7 +11,7 @@ namespace MVCEnMiNevera.Models
         public ListaCompra ConvertENToModelUI(ListaCompraEN en)
         {
             ListaCompra model = new ListaCompra();
-            model.id = en.Id;
+            model.Id = en.Id;
             model.Nombre = en.Nombre;
             model.Fecha = en.Fecha;
 

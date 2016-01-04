@@ -11,7 +11,7 @@ namespace MVCEnMiNevera.Models
     public class ListaCompra
     {
         [ScaffoldColumn(false)]
-        public int id { get; set; }
+        public int Id { get; set; }
 
         [Display(Prompt = "Nombre de la lista de la compra", Description = "Nombre de la lista de la compra", Name = "Nombre ")]
         [Required(ErrorMessage = "Debe indicar un nombre para la lista de la compra")]

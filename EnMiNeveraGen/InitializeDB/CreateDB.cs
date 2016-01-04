@@ -106,10 +106,31 @@ public static void InitializeData ()
                 System.Console.WriteLine ("\n\n ----- INICIO: creamos pasos de recetas ------------------------------------------\n");
                 // Desordenados
                 PasosCEN pasosCen = new PasosCEN ();
+                System.Console.WriteLine ("Receta1 ------------------------------------------------------------------\n");
                 pasosCen.New_ ("Paso 1", receta_oid1, 1);
                 pasosCen.New_ ("Paso 3", receta_oid1, 3);
                 pasosCen.New_ ("Paso 2", receta_oid1, 2);
                 pasosCen.New_ ("Paso 4", receta_oid1, 4);
+                System.Console.WriteLine ("Receta2 ------------------------------------------------------------------\n");
+                pasosCen.New_ ("Paso 1_2", receta_oid2, 1);
+                pasosCen.New_ ("Paso 2_2", receta_oid2, 2);
+                pasosCen.New_ ("Paso 3_2", receta_oid2, 3);
+                System.Console.WriteLine ("Receta3 ------------------------------------------------------------------\n");
+                pasosCen.New_ ("Paso 1_3", receta_oid3, 1);
+                pasosCen.New_ ("Paso 2_3", receta_oid3, 2);
+                pasosCen.New_ ("Paso 3_3", receta_oid3, 3);
+                System.Console.WriteLine ("Receta4 ------------------------------------------------------------------\n");
+                pasosCen.New_ ("Paso 1_4", receta_oid4, 1);
+                pasosCen.New_ ("Paso 2_4", receta_oid4, 2);
+                pasosCen.New_ ("Paso 3_4", receta_oid4, 3);
+                System.Console.WriteLine ("Receta5 ------------------------------------------------------------------\n");
+                pasosCen.New_ ("Paso 1_5", receta_oid5, 1);
+                pasosCen.New_ ("Paso 2_5", receta_oid5, 2);
+                pasosCen.New_ ("Paso 3_5", receta_oid5, 3);
+                System.Console.WriteLine ("Receta6 ------------------------------------------------------------------\n");
+                pasosCen.New_ ("Paso 1_6", receta_oid6, 1);
+                pasosCen.New_ ("Paso 2_6", receta_oid6, 2);
+                pasosCen.New_ ("Paso 3_6", receta_oid6, 3);
                 System.Console.WriteLine ("\n ----- FIN: pasos de recetas creadas ------------------------------------------\n\n\n");
 
 
@@ -124,9 +145,30 @@ public static void InitializeData ()
 
                 System.Console.WriteLine ("\n\n ----- INICIO: LineaIngrediente ------------------------------------------\n");
                 LineaIngredienteCEN lineaIngredienteCen = new LineaIngredienteCEN ();
+                System.Console.WriteLine ("LineaIngrediente de Receta1 ---------------------------------------------------\n");
                 lineaIngredienteCen.New_ (10, UnidadesEnum.unidades, idHuevos, receta_oid1);
                 lineaIngredienteCen.New_ (100, UnidadesEnum.gramos, idHarina, receta_oid1);
                 lineaIngredienteCen.New_ (20, UnidadesEnum.mililitros, idAceite, receta_oid1);
+                System.Console.WriteLine ("LineaIngrediente de Receta2 ---------------------------------------------------\n");
+                lineaIngredienteCen.New_ (12, UnidadesEnum.unidades, idHuevos, receta_oid2);
+                lineaIngredienteCen.New_ (150, UnidadesEnum.gramos, idHarina, receta_oid2);
+                lineaIngredienteCen.New_ (25, UnidadesEnum.mililitros, idAceite, receta_oid2);
+                System.Console.WriteLine ("LineaIngrediente de Receta3 ---------------------------------------------------\n");
+                lineaIngredienteCen.New_ (14, UnidadesEnum.unidades, idHuevos, receta_oid3);
+                lineaIngredienteCen.New_ (100, UnidadesEnum.gramos, idArroz, receta_oid3);
+                lineaIngredienteCen.New_ (10, UnidadesEnum.mililitros, idAceite, receta_oid3);
+                System.Console.WriteLine ("LineaIngrediente de Receta4 ---------------------------------------------------\n");
+                lineaIngredienteCen.New_ (20, UnidadesEnum.unidades, idHuevos, receta_oid4);
+                lineaIngredienteCen.New_ (200, UnidadesEnum.gramos, idHarina, receta_oid4);
+                lineaIngredienteCen.New_ (40, UnidadesEnum.mililitros, idAceite, receta_oid4);
+                System.Console.WriteLine ("LineaIngrediente de Receta5 ---------------------------------------------------\n");
+                lineaIngredienteCen.New_ (30, UnidadesEnum.unidades, idHuevos, receta_oid5);
+                lineaIngredienteCen.New_ (300, UnidadesEnum.gramos, idHarina, receta_oid5);
+                lineaIngredienteCen.New_ (30, UnidadesEnum.mililitros, idAceite, receta_oid5);
+                System.Console.WriteLine ("LineaIngrediente de Receta6 ---------------------------------------------------\n");
+                lineaIngredienteCen.New_ (40, UnidadesEnum.unidades, idHuevos, receta_oid6);
+                lineaIngredienteCen.New_ (400, UnidadesEnum.gramos, idHarina, receta_oid6);
+                lineaIngredienteCen.New_ (50, UnidadesEnum.mililitros, idAceite, receta_oid6);
                 System.Console.WriteLine ("\n ----- FIN: LineaIngrediente ------------------------------------------\n\n\n");
 
 
@@ -154,11 +196,16 @@ public static void InitializeData ()
                 System.Console.WriteLine ("\n\n ----- INICIO: ListaCompra ------------------------------------------\n");
                 ListaCompraCEN listaCompraCen = new ListaCompraCEN ();
                 int idListaCompra1 = listaCompraCen.New_ ("Lista1", DateTime.Now, oid1);
+                int idListaCompra2 = listaCompraCen.New_ ("Lista2", DateTime.Now, oid1);
+                int idListaCompra3 = listaCompraCen.New_ ("Lista3", DateTime.Now, oid1);
                 System.Console.WriteLine ("\n ----- Lineas -----------------------------------------------------\n");
                 LineaListaCompraCEN lineaListaCompraCen = new LineaListaCompraCEN ();
                 int idLineaListaCompra1_1 = lineaListaCompraCen.New_ (12, UnidadesEnum.unidades, idHuevos, idListaCompra1, false);
                 int idLineaListaCompra1_2 = lineaListaCompraCen.New_ (100, UnidadesEnum.gramos, idHarina, idListaCompra1, false);
                 int idLineaListaCompra1_3 = lineaListaCompraCen.New_ (1000, UnidadesEnum.mililitros, idAceite, idListaCompra1, false);
+                int idLineaListaCompra2_1 = lineaListaCompraCen.New_ (22, UnidadesEnum.unidades, idHuevos, idListaCompra2, false);
+                int idLineaListaCompra2_2 = lineaListaCompraCen.New_ (100, UnidadesEnum.gramos, idArroz, idListaCompra2, false);
+                int idLineaListaCompra2_3 = lineaListaCompraCen.New_ (200, UnidadesEnum.mililitros, idAceite, idListaCompra2, false);
                 System.Console.WriteLine ("\n ----- FIN: ListaCompra ------------------------------------------\n\n\n");
 
 

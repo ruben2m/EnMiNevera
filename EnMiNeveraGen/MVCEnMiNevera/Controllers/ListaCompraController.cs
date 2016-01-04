@@ -7,21 +7,23 @@ using MVCEnMiNevera.Models;
 using EnMiNeveraGenNHibernate.CAD.EnMiNevera;
 using EnMiNeveraGenNHibernate.CEN.EnMiNevera;
 using EnMiNeveraGenNHibernate.EN.EnMiNevera;
+using NHibernate;
 
 namespace MVCEnMiNevera.Controllers
 {
     public class ListaCompraController : BasicController
     {
         // GET: ListaCompra
-        public ActionResult Index()
+        [Authorize]
+        public ActionResult Index(int id = -1)
         {
             SessionInitialize();
 
-            int oid_usuario = 1; // TODO obtener el usuario actual
-            UsuarioEN usuarioEn = new UsuarioCAD(session).ReadOIDDefault(oid_usuario);
+            UsuarioEN usuarioEn = new UsuarioCAD(session).GetByNick(User.Identity.Name);
 
-            IEnumerable<ListaCompra> listListaCompra = new AssemblerListaCompra().ConvertListENToModel(usuarioEn.ListasCompra).ToList();
+            IList<ListaCompra> listListaCompra = new AssemblerListaCompra().ConvertListENToModel(usuarioEn.ListasCompra).ToList();
 
+            // Hago persistentes los datos
             foreach(ListaCompra l in listListaCompra)
                 foreach (LineaListaCompraEN lin in l.LineasListaCompra)
                 {
@@ -29,13 +31,44 @@ namespace MVCEnMiNevera.Controllers
                     lin.Ingrediente.Nombre = lin.Ingrediente.Nombre;
                 }
 
-            //IList<LineaListaCompraEN> lineasListaCompraEn = new Linea
-
-
             SessionClose();
+
+            if (id == -1)
+                ViewData["idListaActiva"] = listListaCompra.First().Id;
+            else
+                ViewData["idListaActiva"] = id;
 
             return View(listListaCompra);
         }
+
+        // GET: ListaCompra/check/1
+        [Authorize]
+        public ActionResult Check(int id)
+        {
+            // Utilizando session no funciona
+            //SessionInitialize();
+            //LineaListaCompraCAD lineaListaCompraCad = new LineaListaCompraCAD(session);
+            //LineaListaCompraCEN lineaListaCompraCen = new LineaListaCompraCEN(lineaListaCompraCad);
+            //LineaListaCompraEN en = lineaListaCompraCad.ReadOIDDefault(id);
+            ////lineaListaCompraCen.Modify(en.Id, en.Cantidad, en.Unidad, !en.Comprado);
+            ////lineaListaCompraEn.Comprado = !lineaListaCompraEn.Comprado;
+            ////lineaListaCompraCad.Modify(lineaListaCompraEn);
+            //SessionClose();
+
+            int idListaCompra = -1;
+
+            LineaListaCompraCAD cad = new LineaListaCompraCAD();
+            LineaListaCompraEN en = new LineaListaCompraEN();
+
+            en = cad.ReadOIDDefault(id);
+            en.Comprado = !en.Comprado;
+            idListaCompra = en.ListaCompra.Id;  // No da lazyException... Solo se puede acceder al ID para que no dé.
+            cad.Modify(en);
+
+            return RedirectToAction("Index", new { id = idListaCompra });
+        }
+
+ 
 
         // GET: ListaCompra/Details/5
         public ActionResult Details(int id)
