@@ -53,7 +53,8 @@
                 }
                 else
                 {
-                    using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) 
+                    //using (Html.BeginForm(new { controller = "account", action = "login", ReturnUrl = ViewBag.ReturnUrl }))
+                    using (Html.BeginForm(new { controller = "account", action = "login", ReturnUrl = "/" }))
                     {
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary(true)
