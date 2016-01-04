@@ -21,6 +21,7 @@ namespace MVCEnMiNevera.Controllers
         }
 
         // GET: Usuario/Details/5
+        [Authorize]
         public ActionResult Perfil()
         {
             SessionInitialize();

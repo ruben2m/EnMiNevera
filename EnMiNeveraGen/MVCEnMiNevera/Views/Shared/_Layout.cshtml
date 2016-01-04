@@ -39,28 +39,43 @@
                 <a href="@Url.Action("Index", "Home")"><img src="css/images/Logo.png" width="30px">Logotipo</a>
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse">
-            @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
-            {
-                @Html.AntiForgeryToken()
-                @Html.ValidationSummary(true)
-                <div class="navbar-form navbar-right">
-                    <input data-val="true" data-val-required="El campo Nombre de usuario es obligatorio." id="Nick" name="Nick" type="text" value="">
-                    <span class="field-validation-valid" data-valmsg-for="Nick" data-valmsg-replace="true"></span>
-                    <input data-val="true" data-val-required="El campo Contraseña es obligatorio." id="Password" name="Password" type="text" value="">
-                    <span class="field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="true"></span>
-                    <input data-val="true" data-val-required="El campo ¿Recordar cuenta? es obligatorio." id="RememberMe" name="RememberMe" type="checkbox" value="true"><input name="RememberMe" type="hidden" value="false">
-                    <label class="checkbox" for="RememberMe">¿Recordar cuenta?</label>
-                    @*@Html.TextBoxFor(m => m.Nick)
-                    @Html.ValidationMessageFor(m => m.Nick)
-                    @Html.TextBoxFor(m => m.Password)
-                    @Html.ValidationMessageFor(m => m.Password)
-                    @Html.CheckBoxFor(m => m.RememberMe)
-                    @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })*@
+                @if (Request.IsAuthenticated)
+                {
+                    <div class="navbar-form navbar-right">
+                        ¡Hola, @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Administrar" })!
+                        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a>
+                        }
 
-                    <input class="btn btn-default" type="submit" value="Iniciar sesión">
-                    <a href="@Url.Action("Register", "Account")">Regístrate</a>
-                </div>
-            }
+                    </div>
+                }
+                else
+                {
+                    using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) 
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+                        <div class="navbar-form navbar-right">
+                            <input data-val="true" data-val-required="El campo Nombre de usuario es obligatorio." id="Nick" name="Nick" type="text" value="">
+                            <span class="field-validation-valid" data-valmsg-for="Nick" data-valmsg-replace="true"></span>
+                            <input data-val="true" data-val-required="El campo Contraseña es obligatorio." id="Password" name="Password" type="text" value="">
+                            <span class="field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="true"></span>
+                            <input data-val="true" data-val-required="El campo ¿Recordar cuenta? es obligatorio." id="RememberMe" name="RememberMe" type="checkbox" value="true"><input name="RememberMe" type="hidden" value="false">
+                            <label class="checkbox" for="RememberMe">¿Recordar cuenta?</label>
+                            @*@Html.TextBoxFor(m => m.Nick)
+                            @Html.ValidationMessageFor(m => m.Nick)
+                            @Html.TextBoxFor(m => m.Password)
+                            @Html.ValidationMessageFor(m => m.Password)
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })*@
+
+                            <input class="btn btn-default" type="submit" value="Iniciar sesión">
+                            <a href="@Url.Action("Register", "Account")">Regístrate</a>
+                        </div>
+                    }
+                }
             </div>
             
         </div>

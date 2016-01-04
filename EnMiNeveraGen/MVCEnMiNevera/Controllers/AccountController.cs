@@ -40,12 +40,20 @@ namespace MVCEnMiNevera.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
-            if (ModelState.IsValid && WebSecurity.Login(model.Nick, model.Password, persistCookie: model.RememberMe))
+            //if (ModelState.IsValid && WebSecurity.Login(model.Nick, model.Password, persistCookie: model.RememberMe))
+            if (ModelState.IsValid)
             {
                 UsuarioCEN cen = new UsuarioCEN();
-                int id = -1;
-                if (cen.Login(ref id, model.Nick, model.Nick, model.Password))
+                int id = cen.Login(model.Nick, model.Nick, model.Password);
+                if (id != -1)
+                {
+                    if(! WebSecurity.Login(model.Nick, model.Password, persistCookie: model.RememberMe))
+                    {
+                        WebSecurity.CreateUserAndAccount(model.Nick, model.Password);
+                        WebSecurity.Login(model.Nick, model.Password, persistCookie: model.RememberMe);
+                    }
                     return RedirectToLocal(returnUrl);
+                }
             }
 
             // Si llegamos a este punto, es que se ha producido un error y volvemos a mostrar el formulario

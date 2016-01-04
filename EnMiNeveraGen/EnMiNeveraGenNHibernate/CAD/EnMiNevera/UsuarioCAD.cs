@@ -331,5 +331,67 @@ public System.Collections.Generic.IList<EnMiNeveraGenNHibernate.EN.EnMiNevera.Us
 
         return result;
 }
+public EnMiNeveraGenNHibernate.EN.EnMiNevera.UsuarioEN GetByNick (string p_nick)
+{
+        EnMiNeveraGenNHibernate.EN.EnMiNevera.UsuarioEN result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM UsuarioEN self where FROM UsuarioEN us WHERE us.Nick = :p_nick";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("UsuarioENgetByNickHQL");
+                query.SetParameter ("p_nick", p_nick);
+
+
+                result = query.UniqueResult<EnMiNeveraGenNHibernate.EN.EnMiNevera.UsuarioEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is EnMiNeveraGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new EnMiNeveraGenNHibernate.Exceptions.DataLayerException ("Error in UsuarioCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public EnMiNeveraGenNHibernate.EN.EnMiNevera.UsuarioEN GetByEmail (string p_email)
+{
+        EnMiNeveraGenNHibernate.EN.EnMiNevera.UsuarioEN result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM UsuarioEN self where FROM UsuarioEN us WHERE us.Email = :p_email";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("UsuarioENgetByEmailHQL");
+                query.SetParameter ("p_email", p_email);
+
+
+                result = query.UniqueResult<EnMiNeveraGenNHibernate.EN.EnMiNevera.UsuarioEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is EnMiNeveraGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new EnMiNeveraGenNHibernate.Exceptions.DataLayerException ("Error in UsuarioCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 }
 }

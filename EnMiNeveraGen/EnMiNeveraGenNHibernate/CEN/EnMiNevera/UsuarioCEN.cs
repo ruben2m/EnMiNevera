@@ -124,5 +124,13 @@ public System.Collections.Generic.IList<EnMiNeveraGenNHibernate.EN.EnMiNevera.Us
 {
         return _IUsuarioCAD.VerNumSeguidos (p_oid);
 }
+public EnMiNeveraGenNHibernate.EN.EnMiNevera.UsuarioEN GetByNick (string p_nick)
+{
+        return _IUsuarioCAD.GetByNick (p_nick);
+}
+public EnMiNeveraGenNHibernate.EN.EnMiNevera.UsuarioEN GetByEmail (string p_email)
+{
+        return _IUsuarioCAD.GetByEmail (p_email);
+}
 }
 }

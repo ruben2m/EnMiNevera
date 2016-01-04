@@ -37,5 +37,11 @@ System.Collections.Generic.IList<EnMiNeveraGenNHibernate.EN.EnMiNevera.UsuarioEN
 
 
 System.Collections.Generic.IList<EnMiNeveraGenNHibernate.EN.EnMiNevera.UsuarioEN> VerNumSeguidos (int p_oid);
+
+
+EnMiNeveraGenNHibernate.EN.EnMiNevera.UsuarioEN GetByNick (string p_nick);
+
+
+EnMiNeveraGenNHibernate.EN.EnMiNevera.UsuarioEN GetByEmail (string p_email);
 }
 }

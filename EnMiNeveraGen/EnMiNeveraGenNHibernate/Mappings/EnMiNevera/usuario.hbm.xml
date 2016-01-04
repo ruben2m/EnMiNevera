@@ -144,5 +144,7 @@
 		  <query name="UsuarioENverActividadSeguidosHQL"><![CDATA[FROM UsuarioEN]]></query>
 		  <query name="UsuarioENverNumSeguidoresHQL"><![CDATA[SELECT COUNT(se) FROM UsuarioEN us INNER JOIN us.Seguidores se WHERE se.Id = :p_oid]]></query>
 		  <query name="UsuarioENverNumSeguidosHQL"><![CDATA[SELECT COUNT(se) FROM UsuarioEN us INNER JOIN us.Seguidos se WHERE us.id = :p_oid]]></query>
+		  <query name="UsuarioENgetByNickHQL"><![CDATA[FROM UsuarioEN us WHERE us.Nick = :p_nick]]></query>
+		  <query name="UsuarioENgetByEmailHQL"><![CDATA[FROM UsuarioEN us WHERE us.Email = :p_email]]></query>
 		</hibernate-mapping>
 	

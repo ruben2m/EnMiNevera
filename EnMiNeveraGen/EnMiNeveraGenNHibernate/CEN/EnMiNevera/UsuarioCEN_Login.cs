@@ -14,28 +14,38 @@ namespace EnMiNeveraGenNHibernate.CEN.EnMiNevera
 {
 public partial class UsuarioCEN
 {
-public bool Login (ref int p_oid, string p_nick, string p_email, String p_contrasena)
+public int Login (string p_nick, string p_email, String p_contrasena)
 {
         /*PROTECTED REGION ID(EnMiNeveraGenNHibernate.CEN.EnMiNevera_Usuario_login) ENABLED START*/
 
+        int oid = -1;
 
-        UsuarioEN usuarioEN = _IUsuarioCAD.ReadOIDDefault (p_oid);
-        bool encontrado = false;
+        UsuarioCEN usuarioCen = new UsuarioCEN ();
+        UsuarioEN usuarioEn = usuarioCen.GetByNick (p_nick);     // _IUsuarioCAD.ReadOIDDefault(p_oid);
 
-        if ((p_email != null) && (p_contrasena != null) && (usuarioEN.Email.Equals (p_email) && (usuarioEN.Contrasena.Equals (Utils.Util.GetEncondeMD5 (p_contrasena))))) {
-                p_oid = usuarioEN.Id;
-                encontrado = true;
+        if (usuarioEn.Contrasena.Equals (Utils.Util.GetEncondeMD5 (p_contrasena)))
+                oid = usuarioEn.Id;
+        else{
+                usuarioEn = usuarioCen.GetByEmail (p_email);
+                if (usuarioEn.Contrasena.Equals (Utils.Util.GetEncondeMD5 (p_contrasena)))
+                        oid = usuarioEn.Id;
         }
-        else if ((p_nick != null) && (p_contrasena != null) && (usuarioEN.Nick.Equals (p_nick) && (usuarioEN.Contrasena.Equals (Utils.Util.GetEncondeMD5 (p_contrasena))))) {
-                p_oid = usuarioEN.Id;
-                encontrado = true;
-        }
+
+
+        //if ((p_email != null) && (p_contrasena != null) && (usuarioEN.Email.Equals(p_email) && (usuarioEN.Contrasena.Equals(Utils.Util.GetEncondeMD5(p_contrasena)))))
+        //{
+        //    p_oid = usuarioEN.Id;
+        //}
+        //else if ((p_nick != null) && (p_contrasena != null) && (usuarioEN.Nick.Equals(p_nick) && (usuarioEN.Contrasena.Equals(Utils.Util.GetEncondeMD5(p_contrasena)))))
+        //{
+        //    p_oid = usuarioEN.Id;
+        //}
         /* else
          * {
          *   throw new NotImplementedException("No ha podido loguearse.");
          * }*/
 
-        return encontrado;
+        return oid;
 
 
         /*PROTECTED REGION END*/
