@@ -137,5 +137,16 @@ namespace MVCEnMiNevera.Controllers
                 return View();
             }
         }
+
+        // GET: Receta/Ultimas
+        public ActionResult Ultimas()
+        {
+
+
+            // new RecetaCEN().VerUltimasRecetas();
+
+            return View();
+        }
+
     }
 }
