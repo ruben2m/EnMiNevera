@@ -27,9 +27,9 @@ textarea {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 60px;
     color: white;
     padding-top: 20px;
+    padding-bottom: 20px;
     background-color: #1b1b1b;
     background-image: -moz-linear-gradient(top, #222222, #111111);
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#222222), to(#111111));

@@ -73,6 +73,7 @@ namespace MVCEnMiNevera.Controllers
         public ActionResult LogOff()
         {
             WebSecurity.Logout();
+            Session["idUsuario"] = null;
 
             return RedirectToAction("Index", "Home");
         }

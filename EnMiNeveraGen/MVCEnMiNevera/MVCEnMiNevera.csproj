@@ -229,6 +229,7 @@
     <Compile Include="Models\AssemblerUsuario.cs" />
     <Compile Include="Models\AssemblerReceta.cs" />
     <Compile Include="Models\AssemblerListaCompra.cs" />
+    <Compile Include="Models\LineaListaCompra.cs" />
     <Compile Include="Models\ListaCompra.cs" />
     <Compile Include="Models\Receta.cs" />
     <Compile Include="Models\Usuario.cs" />
