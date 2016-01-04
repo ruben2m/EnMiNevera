@@ -10,34 +10,34 @@ namespace MVCEnMiNevera.Models
     {
         public Receta ConvertENToModelUI(RecetaEN en)
         {
-            Receta receta = new Receta();
-            receta.id = en.Id;
-            receta.Nombre = en.Nombre;
-            receta.Descripcion = en.Descripcion;
-            receta.Foto = en.Foto;
-            receta.FechaCreacion = en.FechaCreacion;
-            receta.Estado = en.Estado;
+            Receta model = new Receta();
+            model.id = en.Id;
+            model.Nombre = en.Nombre;
+            model.Descripcion = en.Descripcion;
+            model.Foto = en.Foto;
+            model.FechaCreacion = en.FechaCreacion;
+            model.Estado = en.Estado;
 
-            receta.IdUsuario = en.Usuario.Id;
-            receta.NombreUsuario = en.Usuario.Nombre;
+            model.IdUsuario = en.Usuario.Id;
+            model.NombreUsuario = en.Usuario.Nombre;
 
-            receta.UsuariosFavorito = en.UsuariosFavorito.ToList();
+            model.UsuariosFavorito = en.UsuariosFavorito.ToList();
             // Pasos ordenados por numero paso
-            receta.Pasos = en.Pasos.OrderBy(f => f.NumeroPaso).ToList();
-            receta.Comentario = en.Comentarios.ToList();
-            receta.LineasIngrediente = en.LineasIngrediente.ToList();
-            receta.LineasListaCompra = en.LineasListaCompra.ToList();
+            model.Pasos = en.Pasos.OrderBy(f => f.NumeroPaso).ToList();
+            model.Comentario = en.Comentarios.ToList();
+            model.LineasIngrediente = en.LineasIngrediente.ToList();
+            model.LineasListaCompra = en.LineasListaCompra.ToList();
 
-            return receta;
+            return model;
         }
         public IList<Receta> ConvertListENToModel(IList<RecetaEN> ens)
         {
-            IList<Receta> recetas = new List<Receta>();
+            IList<Receta> lista = new List<Receta>();
             foreach (RecetaEN en in ens)
             {
-                recetas.Add(ConvertENToModelUI(en));
+                lista.Add(ConvertENToModelUI(en));
             }
-            return recetas;
+            return lista;
         }
     }
 

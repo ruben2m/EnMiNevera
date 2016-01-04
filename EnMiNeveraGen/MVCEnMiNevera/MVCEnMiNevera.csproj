@@ -234,6 +234,7 @@
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Views\Receta\Ver.cshtml" />
+    <Content Include="Views\Account\_LoginInline.cshtml" />
     <None Include="Views\Usuario\Perfil.cshtml" />
   </ItemGroup>
   <ItemGroup>

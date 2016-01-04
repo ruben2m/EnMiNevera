@@ -1,4 +1,4 @@
-﻿@*@model MVCEnMiNevera.Models.LoginModel // Eso esta petando cuando accedes a un controlador que haga uso de otro modelo, habra que hacerlo de otra manera*@
+﻿@*@model MVCEnMiNevera.Models.LoginModel //Eso esta petando cuando accedes a un controlador que haga uso de otro modelo, habra que hacerlo de otra manera*@ 
 @{
     ViewBag.Title = "Login";
 }
@@ -44,6 +44,12 @@
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
                 <div class="navbar-form navbar-right">
+                    <input data-val="true" data-val-required="El campo Nombre de usuario es obligatorio." id="Nick" name="Nick" type="text" value="">
+                    <span class="field-validation-valid" data-valmsg-for="Nick" data-valmsg-replace="true"></span>
+                    <input data-val="true" data-val-required="El campo Contraseña es obligatorio." id="Password" name="Password" type="text" value="">
+                    <span class="field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="true"></span>
+                    <input data-val="true" data-val-required="El campo ¿Recordar cuenta? es obligatorio." id="RememberMe" name="RememberMe" type="checkbox" value="true"><input name="RememberMe" type="hidden" value="false">
+                    <label class="checkbox" for="RememberMe">¿Recordar cuenta?</label>
                     @*@Html.TextBoxFor(m => m.Nick)
                     @Html.ValidationMessageFor(m => m.Nick)
                     @Html.TextBoxFor(m => m.Password)

@@ -1,0 +1,21 @@
+﻿@model MVCEnMiNevera.Models.LoginModel
+
+<div class="collapse navbar-collapse navbar-ex1-collapse">
+    @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+            {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <div class="navbar-form navbar-right">
+            @Html.TextBoxFor(m => m.Nick)
+            @Html.ValidationMessageFor(m => m.Nick)
+            @Html.TextBoxFor(m => m.Password)
+            @Html.ValidationMessageFor(m => m.Password)
+            @Html.CheckBoxFor(m => m.RememberMe)
+            @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
+
+            <input class="btn btn-default" type="submit" value="Iniciar sesión">
+            <a href="@Url.Action("Register", "Account")">Regístrate</a>
+        </div>
+    }
+</div>
+

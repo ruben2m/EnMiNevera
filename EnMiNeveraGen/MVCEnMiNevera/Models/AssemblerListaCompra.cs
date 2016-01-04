@@ -14,6 +14,10 @@ namespace MVCEnMiNevera.Models
             model.id = en.Id;
             model.Nombre = en.Nombre;
             model.Fecha = en.Fecha;
+
+            model.IdUsuario = en.Usuario.Id;
+            model.NombreUsuario = en.Usuario.Nombre;
+
             model.LineasListaCompra = en.LineasListaCompra.ToList();
 
             return model;

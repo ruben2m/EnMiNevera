@@ -22,6 +22,13 @@ namespace MVCEnMiNevera.Models
         [DataType(DataType.Date)]
         public Nullable<DateTime> Fecha { get; set; }
 
+        // Relaciones a 1
+        [ScaffoldColumn(false)]
+        public string NombreUsuario { get; set; }
+
+        [ScaffoldColumn(false)]
+        public int IdUsuario { get; set; }
+
 
         // Relaciones a *
 
