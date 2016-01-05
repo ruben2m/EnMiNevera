@@ -216,6 +216,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\IngredienteController.cs" />
     <Compile Include="Controllers\ComentarioController.cs" />
     <Compile Include="Controllers\ListaCompraController.cs" />
     <Compile Include="Controllers\RecetaController.cs" />
@@ -233,6 +234,8 @@
     <Compile Include="Models\AssemblerComentario.cs" />
     <Compile Include="Models\AssemblerPaso.cs" />
     <Compile Include="Models\AssemblerLineaIngrediente.cs" />
+    <Compile Include="Models\AssemblerIngrediente.cs" />
+    <Compile Include="Models\Ingrediente.cs" />
     <Compile Include="Models\LineaIngrediente.cs" />
     <Compile Include="Models\Paso.cs" />
     <Compile Include="Models\Comentario.cs" />
@@ -250,6 +253,8 @@
     <Content Include="Views\Receta\Index.cshtml" />
     <Content Include="Views\Receta\_FormLineaIngrediente.cshtml" />
     <Content Include="Views\Receta\_FormPasos.cshtml" />
+    <Content Include="Views\Ingrediente\Index.cshtml" />
+    <Content Include="Views\Receta\Ultimas.cshtml" />
     <None Include="Views\Usuario\Perfil.cshtml" />
   </ItemGroup>
   <ItemGroup>

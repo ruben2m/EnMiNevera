@@ -252,5 +252,31 @@ namespace MVCEnMiNevera.Controllers
                 return View();
             }
         }
+
+        // GET: Receta/Ultimas
+        public ActionResult Ultimas(string search)
+        {
+            SessionInitialize();
+
+            RecetaCAD recCAD = new RecetaCAD(session);
+            RecetaCEN cen = new RecetaCEN(recCAD);
+            IList<RecetaEN> listRecetaEN;
+            IEnumerable<Receta> list;
+
+            if (!String.IsNullOrEmpty(search))
+            {
+                listRecetaEN = cen.Buscar(search);
+                list = new AssemblerReceta().ConvertListENToModel(listRecetaEN).ToList();
+            }
+            else
+            {
+                listRecetaEN = cen.VerUltimasRecetas();
+                list = new AssemblerReceta().ConvertListENToModel(listRecetaEN).ToList();
+            }
+            SessionClose();
+            return View(list);
+        }
+
     }
+
 }
