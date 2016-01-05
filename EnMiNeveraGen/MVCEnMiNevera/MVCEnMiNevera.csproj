@@ -265,6 +265,7 @@
     <Content Include="Views\Ingrediente\Index.cshtml" />
     <Content Include="Views\Receta\Ultimas.cshtml" />
     <Content Include="Views\Receta\BuscaPorIngrediente.cshtml" />
+    <Content Include="Views\Receta\_VerReceta.cshtml" />
     <None Include="Views\Usuario\Perfil.cshtml" />
   </ItemGroup>
   <ItemGroup>

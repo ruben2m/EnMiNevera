@@ -142,6 +142,22 @@ public static void InitializeData ()
                 int idArroz = ingredienteCen.New_ ("arroz");
                 System.Console.WriteLine ("\n ----- FIN: Ingrediente ------------------------------------------\n\n\n");
 
+                /*
+                 * IList<int> ids = new List<int>();
+                 * ids.Add(idHuevos);
+                 * IList<RecetaEN> reEn = recetaCEN.BuscarPorIngrediente(ids);
+                 *
+                 * if (reEn!=null)
+                 *  System.Console.WriteLine("\n encuentra SIIIIIIIIII ...................\n");
+                 * else
+                 *  System.Console.WriteLine("\n NO encuentra ...................\n");
+                 *
+                 * System.Console.WriteLine("\n ha funcionado SIIIIIIIIII ...................\n");
+                 * System.Console.ReadLine ();
+                 */
+
+
+
 
                 System.Console.WriteLine ("\n\n ----- INICIO: LineaIngrediente ------------------------------------------\n");
                 LineaIngredienteCEN lineaIngredienteCen = new LineaIngredienteCEN ();

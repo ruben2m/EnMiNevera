@@ -228,18 +228,16 @@ namespace MVCEnMiNevera.Controllers
                     idsIngredientes.Add(ingredienteEn.Id);
             }
 
-
-
             RecetaCAD cad = new RecetaCAD(session);
             RecetaCEN cen = new RecetaCEN(cad);
             IList<RecetaEN> listEn = cen.BuscarPorIngrediente(idsIngredientes);
-            //IList<RecetaEN> listEn = cen.BuscarPorIngrediente();
+            IList<Receta> list = new AssemblerReceta().ConvertListENToModel(listEn);
 
             SessionClose();
 
             ViewData["ingredientes"] = ingredientes;
       
-            return View(listEn);
+            return View(list);
         }
 
         // GET: Receta/Edit/5

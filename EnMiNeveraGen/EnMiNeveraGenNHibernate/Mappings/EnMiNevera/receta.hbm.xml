@@ -112,7 +112,7 @@
 		  
 		  <query name="RecetaENReadAllHQL">from RecetaEN</query>
 		  <query name="RecetaENbuscarHQL"><![CDATA[FROM RecetaEN re WHERE re.Descripcion LIKE CONCAT( '%', :p_texto, '%') OR re.Nombre LIKE CONCAT('%', :p_texto, '%')]]></query>
-		  <query name="RecetaENbuscarPorIngredienteHQL"><![CDATA[SELECT re FROM RecetaEN re INNER JOIN re.LineasIngrediente lin INNER JOIN lin.Ingrediente ing WHERE ing.Id IN (:p_lista_ingredientes)]]></query>
+		  <query name="RecetaENbuscarPorIngredienteHQL"><![CDATA[SELECT DISTINCT re FROM RecetaEN re INNER JOIN re.LineasIngrediente lin INNER JOIN lin.Ingrediente ing WHERE ing.Id IN (:p_lista_ingredientes)]]></query>
 		  <query name="RecetaENverUltimasRecetasHQL"><![CDATA[FROM RecetaEN re ORDER BY re.FechaCreacion DESC]]></query>
 		</hibernate-mapping>
 	
