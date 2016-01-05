@@ -9,29 +9,17 @@
     <form id="form-busca-por-ingrediente" method="post" action="/Receta/BuscaPorIngrediente">
         <div class="form-group">
             <input type="text" class="form-control input-block" placeholder="Ingredientes" data-role="tagsinput">
-                    <li>@Html.ActionLink("Recetas", "Ultimas", "Receta")</li>
         </div>
         <p>
             <button id="btn-busca-por-ingrediente" class="btn btn-success btn-block btn-lg" type="button">Buscar</button>
         </p>
     </form>
 </div>
-<div id="demo" class="wordcloud">
-    <span data-weight="91"> Chocolate </span>
-    <span data-weight="21"> Tomate </span>
-    <span data-weight="41"> Huevo </span>
-    <span data-weight="13"> Nueces </span>
-    <span data-weight="78"> Uvas </span>
-</div>
-    @Html.Partial("../Ingrediente/Index");
 
-<div id="demo" class="wordcloud">
-    <span data-weight="91"> Chocolate </span>
-    <span data-weight="21"> Tomate </span>
-    <span data-weight="41"> Huevo </span>
-    <span data-weight="13"> Nueces </span>
-    <span data-weight="78"> Uvas </span>
-</div>
+@Html.Partial("../Ingrediente/Index");
+@* Cons, si aqui no le pasas nada, a la vista no le llega ningún modelo, por lo que hace un null. tienes que hacer Html.Partial("...", ingredientes)
+    siendo ingredientes algo que lo calcules en el controller. Por que ahora, ¿que recorres? Si no le estás pasando nada. *@
+
 
 @section scripts {
     <script>
