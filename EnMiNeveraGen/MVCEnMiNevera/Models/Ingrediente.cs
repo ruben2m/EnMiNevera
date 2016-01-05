@@ -19,5 +19,11 @@ namespace MVCEnMiNevera.Models
         [Required(ErrorMessage = "Debe indicar un nombre para el ingrediente")]
         [StringLength(maximumLength: 30, ErrorMessage = "El nombre del ingrediente no puede tener más de 30 caracteres")]
         public string Nombre { get; set; }
+
+        [ScaffoldColumn(false)]
+        public IList<LineaIngredienteEN> LineasIngrediente { get; set; }
+
+        [ScaffoldColumn(false)]
+        public IList<LineaListaCompraEN> LineasListaCompra { get; set; }
     }
 }
