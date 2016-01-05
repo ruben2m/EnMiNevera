@@ -8,14 +8,14 @@
         <h3>Listas de la Compra</h3>
         <hr />
         @* Mostramos las listas de la compra con botones *@
-        <ul class="nav nav-pills" role="tablist">
+        <ul class="nav nav-tabs" role="tablist">
             @{
                 //string clase = "active";
                 string clase = "";
                 foreach (var item in Model.Item1)
                 {
                     if (item.Id.CompareTo(ViewData["idListaActiva"]) == 0) { clase = "active"; } else { clase = ""; }
-                    <li role="presentation" class="@clase"><a href="#receta_@item.Id" aria-control="receta_@item.Id" role="tab" data-toggle="pill">@Html.DisplayFor(model => item.Nombre)</a></li>
+                    <li role="presentation" class="@clase"><a href="#receta_@item.Id" aria-control="receta_@item.Id" role="tab" data-toggle="tab">@Html.DisplayFor(model => item.Nombre)</a></li>
                 }
                 <li role="presentation"><a data-target="#modalAddLista" data-toggle="modal" href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a></li>
             }

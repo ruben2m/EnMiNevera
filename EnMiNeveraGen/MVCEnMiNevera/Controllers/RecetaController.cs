@@ -34,11 +34,11 @@ namespace MVCEnMiNevera.Controllers
                 lin.Ingrediente.Nombre = lin.Ingrediente.Nombre;
             }
 
-            foreach(ComentarioEN com in receta.Comentario)
-            {
-                com.Usuario.Id = com.Usuario.Id;
-                com.Usuario.Nick = com.Usuario.Nick;
-            }
+            //foreach(ComentarioEN com in receta.Comentarios)
+            //{
+            //    com.Usuario.Id = com.Usuario.Id;
+            //    com.Usuario.Nick = com.Usuario.Nick;
+            //}
 
             if (User.Identity.IsAuthenticated)
             {
@@ -47,6 +47,9 @@ namespace MVCEnMiNevera.Controllers
                     ViewData["esFavorito"] = "si";
                 else
                     ViewData["esFavorito"] = "no";
+
+                // Obtengo listas de la compra del usuario actual
+                ViewData["ListasCompra"] = usuarioEn.ListasCompra.ToList();
             }
 
 

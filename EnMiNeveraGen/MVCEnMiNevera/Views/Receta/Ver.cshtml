@@ -4,107 +4,158 @@
     ViewBag.Title = "Ver Receta";
 }
 
-<h2>Receta</h2>
+<div class="content">
+    <h2>Receta</h2>
 
-<div>
     <h4>Detalle de la Receta</h4>
     <hr />
-    <div class="content">
-        <div class="row">
-            <div class="col-xs-12">
-                @Html.DisplayFor(model => model.Nombre)
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-                <div class="thumbnail">
-                    <img src="@Html.DisplayFor(model => model.Foto)" alt="@Html.DisplayFor(model => model.Nombre)">
-                    @if (Request.IsAuthenticated)
-                    {
-                        <a class="btn btn-default" href="/receta/favorito/@Html.DisplayFor(model => model.id)" role="button">
-                            @if (ViewData["esFavorito"].ToString() == "si")
-                            {
-                                <span>Quitar de favoritos</span>
-                            }
-                            else
-                            {
-                                <span>Añadir a favoritos</span>
-                            }
-                        </a>
-                    }
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-4 col-xs-12">
-                Ingredientes:
-                @if (Model.LineasIngrediente.Any())
-                {
-                    string unidad = "";
-                    <ul class="list-group">
-                        @foreach (var item in Model.LineasIngrediente)
-                        {
-                            switch (item.Unidad)
-                            {
-                                case EnMiNeveraGenNHibernate.Enumerated.EnMiNevera.UnidadesEnum.gramos:
-                                    unidad = "gr. de";
-                                    break;
-                                case EnMiNeveraGenNHibernate.Enumerated.EnMiNevera.UnidadesEnum.mililitros:
-                                    unidad = "ml. de";
-                                    break;
-                                case EnMiNeveraGenNHibernate.Enumerated.EnMiNevera.UnidadesEnum.unidades:
-                                    break;
-                                default:
-                                    break;
-                            }
-                            <li class="list-group-item">
-                                @Html.DisplayFor(model => item.Cantidad) @unidad @Html.DisplayFor(model => item.Ingrediente.Nombre)
-                                @if (Request.IsAuthenticated)
-                                {
-                                    <button type="button" class="pull-right btn btn-default btn-xs" aria-label="Left Align">
-                                        <span class="glyphicon glyphicon-align-left glyphicon-shopping-cart" aria-hidden="true"></span>
-                                    </button> 
-                                }
-                            </li>
-                        }
-                    </ul>
-                }
-            </div>
-            <div class="col-md-6 col-sm-5 col-xs-12">
-                Pasos:
-                @if (Model.Pasos.Any())
-                {
-                    <div class="list-group">
-                        @foreach (var item in Model.Pasos)
-                        {
-                            <div class="list-group-item">
-                                <h4 class="list-group-item-heading">@Html.DisplayFor(model => item.NumeroPaso).</h4>
-                                <p class="list-group-item-text">@Html.DisplayFor(model => item.Descripcion)</p>
-                            </div>
-                        }
-                    </div>
-                }
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <h3>Comentarios</h3>
-                @if (Model.Comentario.Any())
-                {
-                    foreach (var item in Model.Comentario)
-                    {
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <h4>@Html.DisplayFor(model => item.Usuario.Nick)</h4>
-                                <p>@Html.DisplayFor(model => item.Comentario)</p>
-                                @Html.DisplayFor(model => item.Fecha)
-                            </div>
-                        </div>
-                    }
-                }
-                else
-                {
-                    <p>No hay comentarios</p>
-                }
-            </div>
+    <div class="row">
+        <div class="col-xs-12">
+            @Html.DisplayFor(model => model.Nombre)
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-3 col-sm-3 col-xs-12">
+            <div class="thumbnail">
+                <img src="@Html.DisplayFor(model => model.Foto)" alt="@Html.DisplayFor(model => model.Nombre)">
+                @if (Request.IsAuthenticated)
+                {
+                    <a class="btn btn-default" href="/receta/favorito/@Html.DisplayFor(model => model.id)" role="button">
+                        @if (ViewData["esFavorito"].ToString() == "si")
+                        {
+                            <span>Quitar de favoritos</span>
+                        }
+                        else
+                        {
+                            <span>Añadir a favoritos</span>
+                        }
+                    </a>
+                }
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12">
+            Ingredientes:
+            @if (Model.LineasIngrediente.Any())
+            {
+                string unidad = "";
+
+                if (Request.IsAuthenticated)
+                {
+                    @* ////////////////////////////////////////////*@
+                    @* Formulario  de crear linea de lista compra*@
+                    @* ////////////////////////////////////////////*@
+                    <form hidden id="form-lista-compra" action="/listacompra/add" method="post">
+                        <input type="hidden" id="Cantidad" name="Cantidad" value="">
+                        <input type="hidden" id="Unidad" name="Unidad" value="">
+                        <input type="hidden" id="NombreIngrediente" name="NombreIngrediente" value="">
+                        <input type="hidden" id="idListaCompra" name="idListaCompra" value="">
+                    </form>
+                }
+
+
+
+                <ul class="list-group">
+                    @foreach (var item in Model.LineasIngrediente)
+                    {
+                        switch (item.Unidad)
+                        {
+                            case EnMiNeveraGenNHibernate.Enumerated.EnMiNevera.UnidadesEnum.gramos:
+                                unidad = "gr. de";
+                                break;
+                            case EnMiNeveraGenNHibernate.Enumerated.EnMiNevera.UnidadesEnum.mililitros:
+                                unidad = "ml. de";
+                                break;
+                            case EnMiNeveraGenNHibernate.Enumerated.EnMiNevera.UnidadesEnum.unidades:
+                                break;
+                            default:
+                                break;
+                        }
+                        <li class="list-group-item">
+                            @Html.DisplayFor(model => item.Cantidad) @unidad @Html.DisplayFor(model => item.Ingrediente.Nombre)
+                            @if (Request.IsAuthenticated)
+                            {
+                                <div class="dropdown pull-right">
+                                    <button id="dLabel_@Model.id" class="btn btn-default btn-xs" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="glyphicon glyphicon-align-left glyphicon-shopping-cart" aria-hidden="true"></span>
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="drop4"> 
+                                        <li class="disabled"><a href="#">Añadir a lista de la compra:</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        @{ 
+                                            IList<EnMiNeveraGenNHibernate.EN.EnMiNevera.ListaCompraEN> listasCompra = (IList<EnMiNeveraGenNHibernate.EN.EnMiNevera.ListaCompraEN>)ViewData["ListasCompra"];
+                                        }
+                                        @foreach (var lista in listasCompra)
+                                        {
+                                            <li><a href="#" data-add-lista data-idlistacompra="@lista.Id" data-nombre-ingrediente="@item.Ingrediente.Nombre" data-unidad="@item.Unidad" data-cantidad="@item.Cantidad">@lista.Nombre</a></li>
+                                        }
+                                    </ul>
+                                </div>
+                            }
+                        </li>
+                    }
+                </ul>
+            }
+        </div>
+        <div class="col-md-5 col-sm-5 col-xs-12">
+            Pasos:
+            @if (Model.Pasos.Any())
+            {
+                <div class="list-group">
+                    @foreach (var item in Model.Pasos)
+                    {
+                        <div class="list-group-item">
+                            <h4 class="list-group-item-heading">@Html.DisplayFor(model => item.NumeroPaso).</h4>
+                            <p class="list-group-item-text">@Html.DisplayFor(model => item.Descripcion)</p>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <h3>Comentarios</h3>
+            @if (Model.Comentarios.Any())
+            {
+                foreach (var item in Model.Comentarios)
+                {
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            @if (Request.IsAuthenticated && User.Identity.Name == item.NombreUsuario)
+                            {
+                                <a href="/comentario/delete/@item.Id" data-confirmation class="pull-right btn btn-danger btn-xs">Borrar</a>
+                            }
+                            <h4>@Html.DisplayFor(model => item.NombreUsuario)</h4>
+                            <p>@Html.DisplayFor(model => item.ComentarioTexto)</p>
+                            @Html.DisplayFor(model => item.Fecha)
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <p>No hay comentarios</p>
+            }
+        </div>
+    </div>
+    @Html.Partial("_FormComentarios", Model.Comentarios);
 </div>
+
+<script>
+    $("[data-confirmation").on('click', function () {
+        return confirm('¿Borrar?')
+    });
+
+    $("a[data-add-lista]").on('click', function (event) {
+        var link = $(event.srcElement);
+
+        $('#Cantidad').val(link.data('cantidad'));
+        $('#Unidad').val(link.data('unidad'));
+        $('#NombreIngrediente').val(link.data('nombre-ingrediente'));
+        $('#idListaCompra').val(link.data('idlistacompra'));
+
+        $('#form-lista-compra').submit();
+    });
+</script>
