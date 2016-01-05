@@ -260,6 +260,7 @@
     <Content Include="Views\ListaCompra\Index.cshtml" />
     <Content Include="Views\Receta\Ultimas.cshtml" />
     <Content Include="Views\Receta\_FormComentarios.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Receta\Crear.cshtml" />
     <Content Include="Views\Receta\_FormReceta.cshtml" />
     <Content Include="Views\Receta\Index.cshtml" />
@@ -268,6 +269,9 @@
     <Content Include="Views\Ingrediente\Index.cshtml" />
     <Content Include="Views\Receta\Ultimas.cshtml" />
     <Content Include="Views\Receta\BuscaPorIngrediente.cshtml" />
+=======
+    <Content Include="Views\Ingrediente\Index.cshtml" />
+>>>>>>> 7ce0b3ba8ce1749e193ceabafe6dd894f9a6b944
     <None Include="Views\Usuario\Perfil.cshtml" />
   </ItemGroup>
   <ItemGroup>

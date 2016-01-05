@@ -15,7 +15,11 @@ namespace MVCEnMiNevera.Controllers
         // GET: Ingrediente
         public ActionResult Index()
         {
+<<<<<<< HEAD
+            SessionInitialize();
+=======
            SessionInitialize();
+>>>>>>> 7ce0b3ba8ce1749e193ceabafe6dd894f9a6b944
 
             IngredienteCAD ingCAD = new IngredienteCAD(session);
             IngredienteCEN cen = new IngredienteCEN(ingCAD);
@@ -97,4 +101,8 @@ namespace MVCEnMiNevera.Controllers
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 7ce0b3ba8ce1749e193ceabafe6dd894f9a6b944

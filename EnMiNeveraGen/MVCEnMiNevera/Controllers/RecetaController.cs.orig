@@ -290,7 +290,11 @@ namespace MVCEnMiNevera.Controllers
         public ActionResult Ultimas(string search)
         {
             SessionInitialize();
+<<<<<<< HEAD
+
+=======
           
+>>>>>>> 7ce0b3ba8ce1749e193ceabafe6dd894f9a6b944
             RecetaCAD recCAD = new RecetaCAD(session);
             RecetaCEN cen = new RecetaCEN(recCAD);
             IList<RecetaEN> listRecetaEN;
