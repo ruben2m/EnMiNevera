@@ -1,4 +1,4 @@
-﻿@model MVCEnMiNevera.Models.Receta
+﻿@model IEnumerable<MVCEnMiNevera.Models.Receta>
 @{
     ViewBag.Title = "Ultimas recetas";
 }
@@ -25,11 +25,11 @@
             {
                 <tr>
                     <td>
-                        <img height="60" width="100" src="@Html.DisplayFor(model => model.Foto)" alt="@Html.DisplayFor(model => model.Nombre)">
+                        <img height="60" width="100" src="@Html.DisplayFor(model => item.Foto)" alt="@Html.DisplayFor(model => item.Nombre)">
                     </td>
                     <td>
-                        @Html.DisplayFor(model => model.Nombre)
-                        @Html.DisplayFor(Model => model.Descripcion)
+                        @Html.DisplayFor(model => item.Nombre)
+                        @Html.DisplayFor(model => item.Descripcion)
                     </td>
                 </tr>
             }
