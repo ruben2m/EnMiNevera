@@ -1,0 +1,23 @@
+﻿@model IEnumerable<MVCEnMiNevera.Models.Actividad>
+
+@{
+    ViewBag.Title = "Ver";
+}
+
+<h2>Ver actividad</h2>
+
+<table class="table">
+
+    @foreach (var item in Model)
+            {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.Usuario) ha 
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Suceso)
+            </td>
+        </tr>
+    }
+
+</table>

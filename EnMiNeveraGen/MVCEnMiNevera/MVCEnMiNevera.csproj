@@ -216,6 +216,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ActividadController.cs" />
     <Compile Include="Controllers\ListaCompraController.cs" />
     <Compile Include="Controllers\RecetaController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
@@ -226,6 +227,8 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Controllers\BasicController.cs" />
+    <Compile Include="Models\Actividad.cs" />
+    <Compile Include="Models\AssemblerActividad.cs" />
     <Compile Include="Models\AssemblerUsuario.cs" />
     <Compile Include="Models\AssemblerReceta.cs" />
     <Compile Include="Models\AssemblerListaCompra.cs" />
@@ -237,6 +240,7 @@
     <Content Include="Views\Account\_LoginInline.cshtml" />
     <Content Include="Views\ListaCompra\Index.cshtml" />
     <Content Include="Views\Receta\Create.cshtml" />
+    <Content Include="Views\Actividad\Ver.cshtml" />
     <None Include="Views\Usuario\Perfil.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -361,6 +365,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\AssemblerActividad\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
