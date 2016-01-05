@@ -1,44 +1,45 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Inicio";
 }
 
-
-    <div class="row">
-        <div class="col-lg-6 col-lg-offset-3 col-xs-6 col-xs-offset-3">
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav nav-pills nav-justified">
-                    <li class="active">@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Actividad", "Actividad", "Home")</li>
-                    <li>@Html.ActionLink("Recetas", "Recetas", "Home")</li>
-                </ul>
-
-            </div>
+<div class="busca jumbotron">
+    <h1>Busca por Ingredientes</h1>
+    <p>Introduce en el buscador los ingredientes que quieras pulsando a continuación la tecla enter para separarlos. Puedes eliminarlos de la búsqueda con el aspa.</p>
+    <form id="form-busca-por-ingrediente" method="post" action="/Receta/BuscaPorIngrediente">
+        <div class="form-group">
+            <input type="text" class="form-control input-block" placeholder="Ingredientes" data-role="tagsinput">
         </div>
-        
-    </div>
-<div class="row">
-    <div class="col-lg-6 col-lg-offset-3 col-xs-6 col-xs-offset-3">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Ingredientes" data-role="tagsinput">
-            <span class="input-group-btn">
-                <button class="btn btn-default" type="button">Buscar</button>
-            </span>
-        </div>
-    </div>
+        <p>
+            <button id="btn-busca-por-ingrediente" class="btn btn-success btn-block btn-lg" type="button">Buscar</button>
+        </p>
+    </form>
 </div>
 
-    <div id="demo" class="wordcloud">
-        <span data-weight="91"> Chocolate </span>
-        <span data-weight="21"> Tomate </span>
-        <span data-weight="41"> Huevo </span>
-        <span data-weight="13"> Nueces </span>
-        <span data-weight="78"> Uvas </span>
-    </div>
+<div id="demo" class="wordcloud">
+    <span data-weight="91"> Chocolate </span>
+    <span data-weight="21"> Tomate </span>
+    <span data-weight="41"> Huevo </span>
+    <span data-weight="13"> Nueces </span>
+    <span data-weight="78"> Uvas </span>
+</div>
 
-        
-   
+@section scripts {
+    <script>
+        $('#btn-busca-por-ingrediente').on('click', function (event) {
+            var frm = $('#form-busca-por-ingrediente');
 
-    
+            // Creamos por cada span creado un input hidden
+            $('.bootstrap-tagsinput>.tag').each(function (index) {
+                frm.append(
+                    $('<input>').attr({
+                        name: 'ingredientes',
+                        type: 'hidden',
+                        value: $(this).text()
+                    })
+                )
+            })
 
-    
-    
+            frm.submit();
+        })
+    </script>
+} 

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
     @Styles.Render("~/Content/css")
-    
+    @Scripts.Render("~/bundles/bootstrap")
     <style type="text/css">
         .wordcloud {
             border: 1px solid #036;
@@ -36,6 +36,21 @@
                 <a class="navbar-brand" href="@Url.Action("Index", "Home")"><img src="css/images/Logo.png" width="30px">EnMiNevera</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @{
+                        string ctrl = @HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString().ToLower();
+                        string inicio = "", actividad = "", recetas = "";
+                        if (ctrl == "home")
+                            inicio = "active";
+                        else if (ctrl == "")
+                            actividad = "active";
+                        else if (ctrl == "receta")
+                            recetas = "active";
+                    }
+                    <li class="@inicio">@Html.ActionLink("Inicio", "Index", "Home")</li>
+                    <li class="@actividad">@Html.ActionLink("Actividad", "Index", "Home")<li>
+                    <li class="@recetas">@Html.ActionLink("Recetas", "Ultimas", "Receta")</li>
+                </ul>
                 @if (Request.IsAuthenticated)
                 {
                     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { @id = "logoutForm", @class = "navbar-form navbar-right" }))
@@ -131,7 +146,6 @@
                 });
             });
     </script>
-    @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
 </html>

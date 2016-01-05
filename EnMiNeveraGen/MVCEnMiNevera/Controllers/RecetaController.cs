@@ -209,6 +209,39 @@ namespace MVCEnMiNevera.Controllers
         }
 
 
+        // POST: Receta/Buscar
+        [HttpPost]
+        public ActionResult BuscaPorIngrediente(string[] ingredientes)
+        {
+            SessionInitialize();
+
+            // Buscamos ingrediente a ingrediente
+            IList<int> idsIngredientes = new List<int>();
+            IngredienteCAD ingredienteCad = new IngredienteCAD(session);
+            IngredienteEN ingredienteEn = null;
+
+            foreach(string ing in ingredientes)
+            {
+                // Solo si existe, añado a la lista. Solo buscamos por ingredientes que existen
+                ingredienteEn = ingredienteCad.GetPorNombre(ing.ToLower());
+                if (ingredienteEn != null)
+                    idsIngredientes.Add(ingredienteEn.Id);
+            }
+
+
+
+            RecetaCAD cad = new RecetaCAD(session);
+            RecetaCEN cen = new RecetaCEN(cad);
+            IList<RecetaEN> listEn = cen.BuscarPorIngrediente(idsIngredientes);
+            //IList<RecetaEN> listEn = cen.BuscarPorIngrediente();
+
+            SessionClose();
+
+            ViewData["ingredientes"] = ingredientes;
+      
+            return View(listEn);
+        }
+
         // GET: Receta/Edit/5
         public ActionResult Edit(int id)
         {
