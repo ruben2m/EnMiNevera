@@ -98,6 +98,7 @@ namespace MVCEnMiNevera.Controllers
 
             UsuarioCAD usuCAD = new UsuarioCAD(session);
             UsuarioCEN cen = new UsuarioCEN(usuCAD);
+            
             IList<UsuarioEN> listActividad = cen.VerActividadSeguidos(1);//meter la id del usuario logueado
             IEnumerable<Actividad> list = new AssemblerActividad().ConvertListENToModel(listActividad).ToList();
             SessionClose();

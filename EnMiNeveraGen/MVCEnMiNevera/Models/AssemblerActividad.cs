@@ -19,6 +19,7 @@ namespace MVCEnMiNevera.Models
             IList<UsuarioEN> lista = new List<UsuarioEN>();
             foreach (UsuarioEN l in ens)
             {
+                
                 lista.Add(ConvertENToModelUI(l));
             }
             return lista;
