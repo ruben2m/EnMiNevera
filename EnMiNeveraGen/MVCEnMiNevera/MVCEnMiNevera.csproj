@@ -231,6 +231,10 @@
     <Compile Include="Models\AssemblerReceta.cs" />
     <Compile Include="Models\AssemblerListaCompra.cs" />
     <Compile Include="Models\AssemblerComentario.cs" />
+    <Compile Include="Models\AssemblerPaso.cs" />
+    <Compile Include="Models\AssemblerLineaIngrediente.cs" />
+    <Compile Include="Models\LineaIngrediente.cs" />
+    <Compile Include="Models\Paso.cs" />
     <Compile Include="Models\Comentario.cs" />
     <Compile Include="Models\LineaListaCompra.cs" />
     <Compile Include="Models\ListaCompra.cs" />
@@ -241,6 +245,11 @@
     <Content Include="Views\Account\_LoginInline.cshtml" />
     <Content Include="Views\ListaCompra\Index.cshtml" />
     <Content Include="Views\Receta\_FormComentarios.cshtml" />
+    <Content Include="Views\Receta\Crear.cshtml" />
+    <Content Include="Views\Receta\_FormReceta.cshtml" />
+    <Content Include="Views\Receta\Index.cshtml" />
+    <Content Include="Views\Receta\_FormLineaIngrediente.cshtml" />
+    <Content Include="Views\Receta\_FormPasos.cshtml" />
     <None Include="Views\Usuario\Perfil.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -358,10 +367,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Articulo\PorCategoria.cshtml" />
-    <Content Include="Views\Articulo\Create.cshtml" />
-    <Content Include="Views\Articulo\Edit.cshtml" />
-    <Content Include="Views\Articulo\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

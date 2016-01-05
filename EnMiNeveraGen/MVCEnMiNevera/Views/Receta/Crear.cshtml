@@ -1,0 +1,88 @@
+﻿@model MVCEnMiNevera.Models.Receta
+
+@{
+    ViewBag.Title = "Nueva Receta";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <h2>Nueva</h2>
+        @Html.Partial("_FormReceta", Model)
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        var i = 0;  // Ingredientes
+        $('#nuevo-ingrediente').on('click', function (event) {
+            $('#modalAddLineaIngrediente').modal({});
+        })
+
+        $('#modalAddLineaIngrediente').on('shown.bs.modal', function () { $('#Cantidad').focus(); })
+
+        $('#btn-add-ingrediente').on('click', function (event) {
+            i++;
+
+            // Creo los elementos cantidad, unidad, nombreIngrediente
+            $('<input>').attr({ id: 'cantidad_' + i, name: 'canIngrediente', type: 'hidden', value: $('#Cantidad').val() }).appendTo('#form-receta');
+            $('<input>').attr({ id: 'unidad_' + i, name: 'uniIngrediente', type: 'hidden', value: $('#Unidad').val() }).appendTo('#form-receta');
+            $('<input>').attr({ id: 'nombreIngrediente_' + i, name: 'nomIngrediente', type: 'hidden', value: $('#NombreIngrediente').val() }).appendTo('#form-receta');
+
+            // Creo la linea visible
+            var texto = $('#Cantidad').val() + ' ';
+            var uni = $('#Unidad').val();
+            if (uni == 1)
+                texto += 'gr. de '
+            else if (uni == 2)
+                texto += 'ml. de ';
+            texto += $('#NombreIngrediente').val();
+            // Añado boton al texto
+            $('#ingredientes').append($('<li>').attr({ id: 'li'+i, class: 'list-group-item' }).text(texto).append('<button type="button" data-borrar="'+i+'" class="pull-right btn btn-danger btn-xs" aria-label="Left Align"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>'))
+
+            $('#modalAddLineaIngrediente').modal('hide');
+        })
+
+        $('#ingredientes').on('click', 'button', function (event) {
+            var lin = $(event.currentTarget).data('borrar');
+            $('#li' + lin).remove();
+            $('#cantidad_' + lin).remove();
+            $('#unidad_' + lin).remove();
+            $('#nombreIngrediente_' + lin).remove();
+        })
+
+
+        /////// PASOS //////////////
+        var p = 0;  // Pasos
+        $('#modalAddPaso').on('shown.bs.modal', function () { $('#NumeroPaso').focus(); })
+
+        $('#nuevo-paso').on('click', function (event) {
+            $('#modalAddPaso').modal({});
+        })
+
+        $('#btn-add-paso').on('click', function (event) {
+            p++;
+
+            // Creo los elementos numero de paso y descripcion
+            $('<input>').attr({ id: 'numeroPaso_' + p, name: 'numPaso', type: 'hidden', value: $('#NumeroPaso').val() }).appendTo('#form-receta');
+            $('<input>').attr({ id: 'descripcionPaso_' + p, name: 'desPaso', type: 'hidden', value: $('#DescripcionPaso').val() }).appendTo('#form-receta');
+
+            // Creo la linea visible
+            var texto = 'Paso '+$('#NumeroPaso').val() + ': '+$('#DescripcionPaso').val();
+            // Y añado el boton borrar
+            $('#pasos').append($('<li>').attr({ id: 'li-paso-'+p, class: 'list-group-item' }).text(texto).append('<button type="button" data-borrar="'+p+'" class="pull-right btn btn-danger btn-xs" aria-label="Left Align"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>'))
+
+
+            $('#modalAddPaso').modal('hide');
+        })
+
+        $('#pasos').on('click', 'button', function (event) {
+            var lin = $(event.currentTarget).data('borrar');
+            $('#li-paso-' + lin).remove();
+            $('#numeroPaso_' + lin).remove();
+            $('#descripcionPaso_' + lin).remove();
+        })
+
+    </script>
+}

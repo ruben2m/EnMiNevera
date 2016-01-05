@@ -93,12 +93,12 @@ public static void InitializeData ()
 
                 System.Console.WriteLine ("\n\n ----- INICIO: creamos recetas ------------------------------------------\n");
                 RecetaCEN recetaCEN = new RecetaCEN ();
-                int receta_oid1 = recetaCEN.New_ ("Nom receta1", "descrip", "http://www.recetas.ninja/wp-content/uploads/2015/09/comida-rapida-dibujos-de-los-usuarios-pintado-por-sango-9836819-256x256.jpg", oid1, DateTime.Now, EnMiNeveraGenNHibernate.Enumerated.EnMiNevera.EstadosEnum.publicado);
-                int receta_oid2 = recetaCEN.New_ ("Nom receta2", "descrip", "http://www.recetas.ninja/wp-content/uploads/2015/09/comida-rapida-dibujos-de-los-usuarios-pintado-por-sango-9836819-256x256.jpg", oid1, DateTime.Now, EnMiNeveraGenNHibernate.Enumerated.EnMiNevera.EstadosEnum.publicado);
-                int receta_oid3 = recetaCEN.New_ ("Nom receta3", "descrip", "http://www.recetas.ninja/wp-content/uploads/2015/09/comida-rapida-dibujos-de-los-usuarios-pintado-por-sango-9836819-256x256.jpg", oid1, DateTime.Now, EnMiNeveraGenNHibernate.Enumerated.EnMiNevera.EstadosEnum.publicado);
-                int receta_oid4 = recetaCEN.New_ ("Nom receta4", "descrip", "http://www.recetas.ninja/wp-content/uploads/2015/09/comida-rapida-dibujos-de-los-usuarios-pintado-por-sango-9836819-256x256.jpg", oid1, DateTime.Now, EnMiNeveraGenNHibernate.Enumerated.EnMiNevera.EstadosEnum.publicado);
-                int receta_oid5 = recetaCEN.New_ ("Nom receta5", "descrip", "http://www.recetas.ninja/wp-content/uploads/2015/09/comida-rapida-dibujos-de-los-usuarios-pintado-por-sango-9836819-256x256.jpg", oid1, DateTime.Now, EnMiNeveraGenNHibernate.Enumerated.EnMiNevera.EstadosEnum.publicado);
-                int receta_oid6 = recetaCEN.New_ ("Nom receta6", "descrip", "http://www.recetas.ninja/wp-content/uploads/2015/09/comida-rapida-dibujos-de-los-usuarios-pintado-por-sango-9836819-256x256.jpg", oid1, DateTime.Now, EnMiNeveraGenNHibernate.Enumerated.EnMiNevera.EstadosEnum.publicado);
+                int receta_oid1 = recetaCEN.New_ ("Nom receta1", "descrip", "/Images/Uploads/nevera.png", oid1, DateTime.Now, EnMiNeveraGenNHibernate.Enumerated.EnMiNevera.EstadosEnum.publicado);
+                int receta_oid2 = recetaCEN.New_ ("Nom receta2", "descrip", "/Images/Uploads/nevera.png", oid1, DateTime.Now, EnMiNeveraGenNHibernate.Enumerated.EnMiNevera.EstadosEnum.publicado);
+                int receta_oid3 = recetaCEN.New_ ("Nom receta3", "descrip", "/Images/Uploads/nevera.png", oid1, DateTime.Now, EnMiNeveraGenNHibernate.Enumerated.EnMiNevera.EstadosEnum.publicado);
+                int receta_oid4 = recetaCEN.New_ ("Nom receta4", "descrip", "/Images/Uploads/nevera.png", oid1, DateTime.Now, EnMiNeveraGenNHibernate.Enumerated.EnMiNevera.EstadosEnum.publicado);
+                int receta_oid5 = recetaCEN.New_ ("Nom receta5", "descrip", "/Images/Uploads/nevera.png", oid1, DateTime.Now, EnMiNeveraGenNHibernate.Enumerated.EnMiNevera.EstadosEnum.publicado);
+                int receta_oid6 = recetaCEN.New_ ("Nom receta6", "descrip", "/Images/Uploads/nevera.png", oid1, DateTime.Now, EnMiNeveraGenNHibernate.Enumerated.EnMiNevera.EstadosEnum.publicado);
                 System.Console.WriteLine ("\n ----- FIN: recetas creadas ------------------------------------------\n\n\n");
 
 

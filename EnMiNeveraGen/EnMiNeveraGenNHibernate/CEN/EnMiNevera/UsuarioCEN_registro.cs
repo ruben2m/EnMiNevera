@@ -31,7 +31,7 @@ public int Registro (string p_nombre, String p_contrasena, String p_repetir_cont
                         if (System.Text.RegularExpressions.Regex.IsMatch (p_email, sFormato)) {
                                 if (System.Text.RegularExpressions.Regex.Replace (p_email, sFormato, String.Empty).Length == 0) {
                                         //oid = usuarioCEN.New_ (p_nombre, EnMiNeveraGenNHibernate.Utils.Util.GetEncondeMD5(p_contrasena), p_email, p_apellidos, p_nick, p_foto, p_biografia, p_fecha_nacim, false, Enumerated.EnMiNevera.RolesEnum.usuario);
-                                        // No es necesario el GetEncodeMD5 aquí, ya que el New_ al ser Password, lo hace automáticamente
+                                        // No es necesario el GetEncodeMD5 aquï¿½, ya que el New_ al ser Password, lo hace automï¿½ticamente
                                         oid = usuarioCEN.New_ (p_nombre, p_contrasena, p_email, p_apellidos, p_nick, p_foto, p_biografia, p_fecha_nacim, false, Enumerated.EnMiNevera.RolesEnum.usuario);
                                 }
                         }

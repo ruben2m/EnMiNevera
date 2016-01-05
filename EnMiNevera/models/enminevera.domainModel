@@ -111,23 +111,23 @@
     </elements>
     <elements xmi:type="es.ua.dlsi.ooh:Class" xmi:id="_oIQEkHymEeW7XKqJGQIfdg" name="Receta" alias="Receta" asociationTarget="_cUs50HytEeW7XKqJGQIfdg _oNJA4H7xEeW3pfNgjqE_CA _tFpgkH70EeW3pfNgjqE_CA _Yv62MH73EeW3pfNgjqE_CA" associationOrigin="__TBMwH7wEeW3pfNgjqE_CA _PfnP0H70EeW3pfNgjqE_CA">
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_4vLy4XysEeW7XKqJGQIfdg" name="new" operationType="New" type="Object" typeObject="_oIQEkHymEeW7XKqJGQIfdg">
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_YP4fkLFdEeWl7M1jTJf1VA" name="p_nombre"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_YP4fkbFdEeWl7M1jTJf1VA" name="p_descripcion"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_YP4fkrFdEeWl7M1jTJf1VA" name="p_foto"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_YP4fk7FdEeWl7M1jTJf1VA" name="p_usuario" type="OID" typeObject="_nHbgwHymEeW7XKqJGQIfdg"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_YP4flLFdEeWl7M1jTJf1VA" name="p_fechaCreacion" type="Date"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_YP4flbFdEeWl7M1jTJf1VA" name="p_estado" type="Enum" typeEnum="_27e-UIfpEeWz7tMJguz2fw"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_4kG9ELObEeWvCbPR8dvQpA" name="p_nombre"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_4kG9EbObEeWvCbPR8dvQpA" name="p_descripcion"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_4kHkILObEeWvCbPR8dvQpA" name="p_foto"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_4kHkIbObEeWvCbPR8dvQpA" name="p_usuario" type="OID" typeObject="_nHbgwHymEeW7XKqJGQIfdg"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_4kHkIrObEeWvCbPR8dvQpA" name="p_fechaCreacion" type="Date"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_4kHkI7ObEeWvCbPR8dvQpA" name="p_estado" type="Enum" typeEnum="_27e-UIfpEeWz7tMJguz2fw"/>
       </operations>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_4vLy4nysEeW7XKqJGQIfdg" name="modify" operationType="Modifier" type="Void">
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_YP4flrFdEeWl7M1jTJf1VA" name="p_Receta_OID" type="OID" typeObject="_oIQEkHymEeW7XKqJGQIfdg"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_YP4fl7FdEeWl7M1jTJf1VA" name="p_nombre"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_YP4fmLFdEeWl7M1jTJf1VA" name="p_descripcion"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_YP4fmbFdEeWl7M1jTJf1VA" name="p_foto"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_YP4fmrFdEeWl7M1jTJf1VA" name="p_fechaCreacion" type="Date"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_YP4fm7FdEeWl7M1jTJf1VA" name="p_estado" type="Enum" typeEnum="_27e-UIfpEeWz7tMJguz2fw"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_4kHkJLObEeWvCbPR8dvQpA" name="p_Receta_OID" type="OID" typeObject="_oIQEkHymEeW7XKqJGQIfdg"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_4kHkJbObEeWvCbPR8dvQpA" name="p_nombre"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_4kHkJrObEeWvCbPR8dvQpA" name="p_descripcion"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_4kHkJ7ObEeWvCbPR8dvQpA" name="p_foto"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_4kHkKLObEeWvCbPR8dvQpA" name="p_fechaCreacion" type="Date"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_4kILMLObEeWvCbPR8dvQpA" name="p_estado" type="Enum" typeEnum="_27e-UIfpEeWz7tMJguz2fw"/>
       </operations>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_4vMZ8HysEeW7XKqJGQIfdg" name="destroy" operationType="Destroy" type="Void">
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_YP4fnLFdEeWl7M1jTJf1VA" name="p_Receta_OID" type="OID" typeObject="_oIQEkHymEeW7XKqJGQIfdg"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_4kILMbObEeWvCbPR8dvQpA" name="p_Receta_OID" type="OID" typeObject="_oIQEkHymEeW7XKqJGQIfdg"/>
       </operations>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_74r6cHysEeW7XKqJGQIfdg" name="buscar" operationType="ReadFilter" type="Object" collectionType="List" typeObject="_oIQEkHymEeW7XKqJGQIfdg" filter="FROM RecetaEN re WHERE re.Descripcion LIKE CONCAT( '%', :p_texto, '%') OR re.Nombre LIKE CONCAT('%', :p_texto, '%')" automaticSynchronize="false">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_qsV4oInxEeW49dwC-z5YAQ" name="p_texto"/>
