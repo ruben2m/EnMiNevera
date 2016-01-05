@@ -52,7 +52,7 @@ namespace MVCEnMiNevera.Models
         public IList<PasosEN> Pasos { get; set; }
 
         [ScaffoldColumn(false)]
-        public IList<ComentarioEN> Comentario { get; set; }
+        public IList<Comentario> Comentarios { get; set; }
 
         [ScaffoldColumn(false)]
         public IList<LineaIngredienteEN> LineasIngrediente { get; set; }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MVCEnMiNevera.Models.ListaCompra>
+﻿@model Tuple<IList<MVCEnMiNevera.Models.ListaCompra>, MVCEnMiNevera.Models.LineaListaCompra>
 @{
     ViewBag.Title = "Listas de la Compra";
 }
@@ -8,23 +8,23 @@
         <h3>Listas de la Compra</h3>
         <hr />
         @* Mostramos las listas de la compra con botones *@
-        <ul class="nav nav-pills" role="tablist">
+        <ul class="nav nav-tabs" role="tablist">
             @{
                 //string clase = "active";
                 string clase = "";
-                foreach (var item in Model)
+                foreach (var item in Model.Item1)
                 {
                     if (item.Id.CompareTo(ViewData["idListaActiva"]) == 0) { clase = "active"; } else { clase = ""; }
-                    <li role="presentation" class="@clase"><a href="#receta_@item.Id" aria-control="receta_@item.Id" role="tab" data-toggle="pill">@Html.DisplayFor(model => item.Nombre)</a></li>
+                    <li role="presentation" class="@clase"><a href="#receta_@item.Id" aria-control="receta_@item.Id" role="tab" data-toggle="tab">@Html.DisplayFor(model => item.Nombre)</a></li>
                 }
-                <li role="presentation"><a href="/listacompra/create"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a></li>
+                <li role="presentation"><a data-target="#modalAddLista" data-toggle="modal" href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a></li>
             }
         </ul>
 
         <div class="tab-content">
             @{
                 string unidad = "";
-                foreach (var item in Model)
+                foreach (var item in Model.Item1)
                 {
                     if (item.Id.CompareTo(ViewData["idListaActiva"]) == 0) { clase = "active"; } else { clase = ""; }
                     <div role="tabpanel" class="tab-pane fade in @clase" id="receta_@item.Id">
@@ -40,33 +40,131 @@
                                         unidad = "ml. de";
                                         break;
                                     case EnMiNeveraGenNHibernate.Enumerated.EnMiNevera.UnidadesEnum.unidades:
+                                        unidad = "";
                                         break;
                                     default:
+                                        unidad = "";
                                         break;
                                 }
                                 <li class="list-group-item">
-                                    @Html.DisplayFor(model => linea.Cantidad) @unidad @Html.DisplayFor(model => linea.Ingrediente.Nombre)
-                                    <a href="/listacompra/check/@linea.Id"class="pull-right btn btn-default btn-xs" aria-label="Left Align">
+                                    <a href="/listacompra/check/@linea.Id" class="btn btn-default btn-xs" aria-label="Left Align">
                                         @if (linea.Comprado)
                                         {
-                                            <span class="glyphicon glyphicon-align-left glyphicon-check" aria-hidden="true"></span>
+                                            <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
                                         }
                                         else
                                         {
-                                            <span class="glyphicon glyphicon-align-left glyphicon-unchecked" aria-hidden="true"></span>
+                                            <span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>
                                         }
-                                    </a> 
+                                    </a>
+                                    @Html.DisplayFor(model => linea.Cantidad) @unidad @Html.DisplayFor(model => linea.Ingrediente.Nombre)
+                                    <a href="/listacompra/remove/@linea.Id" class="confirmation pull-right btn btn-default btn-xs" aria-label="Left Align">
+                                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                    </a>
                                 </li>
                             }
                             @* Linea de crear nueva linea *@
                             <li class="list-group-item">
-                                @Html.ActionLink("Añadir ingrediente", "add")
+                                <a data-target="#modalAddLine" data-toggle="modal" href="#" data-idlistacompra="@item.Id">Añadir ingrediente</a>
                             </li>
                         </ul>
+                        <a href="/listacompra/delete/@item.Id" class="confirmation pull-right btn btn-sm btn-danger">Borrar Lista de la Compra</a>
                     </div>
                     clase = "";
                 }
+
             }
         </div>
     </div>
+
+    @*////////////////////////////////////////////////////////*@
+    @* Esta es la ventana modal para añadir Lista de la compra*@
+    @*////////////////////////////////////////////////////////*@
+    <div class="modal fade" id="modalAddLista" tabindex="-1" role="dialog" aria-labelledby="miModalCrearLista">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Crear lista</h4>
+                </div>
+
+                @using (Html.BeginForm("create", "listacompra", FormMethod.Post))
+                {
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="control-label" for="Nombre">Nombre</label>
+                            <input class="form-control text-box single-line" data-val="true" data-val-length="El nombre no puede tener más de 200 caracteres" data-val-length-max="200" data-val-required="Debe indicar un nombre" id="Nombre" name="Nombre" type="text" value="">
+                            <span class="field-validation-valid" data-valmsg-for="Nombre" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Crear</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+
+    @*////////////////////////////////////////////////*@
+    @* Esta es la ventana modal para añadir linea*@
+    @*////////////////////////////////////////////////*@
+    <div class="modal fade" id="modalAddLine" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Añadir Ingrediente</h4>
+                </div>
+
+                @using (Html.BeginForm("add", "listacompra", FormMethod.Post))
+                {
+                    <div class="modal-body">
+                        <div class="form-group">
+                            @Html.LabelFor(model => Model.Item2.Cantidad, new { @class = "control-label" })
+                            @Html.EditorFor(model => Model.Item2.Cantidad, null, "Cantidad", new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => Model.Item2.Cantidad)
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => Model.Item2.Unidad, new { @class = "control-label" })
+                            <select class="form-control" id="Unidad" name="Unidad" data-val="true" data-val-required="Debe indicar la unidad de medida del ingrediente">
+                                <option value="1" selected>gramos</option>
+                                <option value="2">mililitros</option>
+                                <option value="3">unidades</option>
+                            </select>
+                            @Html.ValidationMessageFor(model => Model.Item2.Unidad)
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => Model.Item2.NombreIngrediente, new { @class = "control-label" })
+                            @Html.EditorFor(model => Model.Item2.NombreIngrediente, null, "NombreIngrediente", new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => Model.Item2.NombreIngrediente)
+                        </div>
+                        <input type="hidden" id="idListaCompra" name="idListaCompra" value="" />
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Añadir</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(".confirmation").on('click', function () {
+            return confirm('¿Borrar?')
+        });
+
+        $('#modalAddLine').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var recipient = button.data('idlistacompra') // Extract info from data-* attributes
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            //var modal = $(this)
+            $('#idListaCompra').val(recipient)
+        });
+    </script>
 </div>

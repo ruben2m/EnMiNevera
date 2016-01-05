@@ -19,12 +19,13 @@ namespace MVCEnMiNevera.Models
             model.Estado = en.Estado;
 
             model.IdUsuario = en.Usuario.Id;
-            model.NombreUsuario = en.Usuario.Nombre;
+            model.NombreUsuario = en.Usuario.Nick;
 
             model.UsuariosFavorito = en.UsuariosFavorito.ToList();
             // Pasos ordenados por numero paso
             model.Pasos = en.Pasos.OrderBy(f => f.NumeroPaso).ToList();
-            model.Comentario = en.Comentarios.ToList();
+            model.Comentarios = new AssemblerComentario().ConvertListENToModel(en.Comentarios);
+            //model.Comentarios = en.Comentarios.ToList();
             model.LineasIngrediente = en.LineasIngrediente.ToList();
             model.LineasListaCompra = en.LineasListaCompra.ToList();
 

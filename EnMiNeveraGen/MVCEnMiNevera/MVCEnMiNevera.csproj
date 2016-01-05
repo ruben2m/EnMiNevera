@@ -216,6 +216,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ComentarioController.cs" />
     <Compile Include="Controllers\ListaCompraController.cs" />
     <Compile Include="Controllers\RecetaController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
@@ -229,6 +230,9 @@
     <Compile Include="Models\AssemblerUsuario.cs" />
     <Compile Include="Models\AssemblerReceta.cs" />
     <Compile Include="Models\AssemblerListaCompra.cs" />
+    <Compile Include="Models\AssemblerComentario.cs" />
+    <Compile Include="Models\Comentario.cs" />
+    <Compile Include="Models\LineaListaCompra.cs" />
     <Compile Include="Models\ListaCompra.cs" />
     <Compile Include="Models\Receta.cs" />
     <Compile Include="Models\Usuario.cs" />
@@ -236,7 +240,11 @@
     <Content Include="Views\Receta\Ver.cshtml" />
     <Content Include="Views\Account\_LoginInline.cshtml" />
     <Content Include="Views\ListaCompra\Index.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Receta\Ultimas.cshtml" />
+=======
+    <Content Include="Views\Receta\_FormComentarios.cshtml" />
+>>>>>>> 5458f93849da9701abd74bfd5960b4c1c10f2cd9
     <None Include="Views\Usuario\Perfil.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -361,6 +369,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Comentario\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

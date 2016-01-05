@@ -18,7 +18,7 @@ namespace MVCEnMiNevera.Models
             model.IdUsuario = en.Usuario.Id;
             model.NombreUsuario = en.Usuario.Nombre;
 
-            model.LineasListaCompra = en.LineasListaCompra.ToList();
+            model.LineasListaCompra = en.LineasListaCompra.OrderBy(f => f.Ingrediente.Nombre).ToList();
 
             return model;
         }
