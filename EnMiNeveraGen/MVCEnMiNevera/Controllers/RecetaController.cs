@@ -80,13 +80,28 @@ namespace MVCEnMiNevera.Controllers
 
         // POST: Receta/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Receta rec, HttpPostedFileBase file)
         {
+
+            string fileName = "", path = "";
+            // Verify that the user selected a file
+            if (file != null && file.ContentLength > 0)
+            {
+                // extract only the fielname
+                fileName = Path.GetFileName(file.FileName);
+                // store the file inside ~/App_Data/uploads folder
+                path = Path.Combine(Server.MapPath("~/Images"), fileName);
+                //string pathDef = path.Replace(@"\\", @"\");
+                file.SaveAs(path);
+            }
+
             try
             {
-                // TODO: Add insert logic here
+                fileName = "/Images/" + fileName;
+                RecetaCEN cen = new RecetaCEN();
+                cen.New_(rec.Nombre, rec.Descripcion, fileName, 1, rec.FechaCreacion, rec.Estado);//Poner la Oid del usuario registrado
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Home");
             }
             catch
             {
