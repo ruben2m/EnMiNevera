@@ -142,13 +142,13 @@ namespace MVCEnMiNevera.Controllers
         public ActionResult Ultimas()
         {
             SessionInitialize();
-            UsuarioCAD usuCAD = new UsuarioCAD(session);
+          
             RecetaCAD recCAD = new RecetaCAD(session);
             RecetaCEN cen = new RecetaCEN(recCAD);
             IList<RecetaEN> listRecetaEN = cen.VerUltimasRecetas();
             IEnumerable<Receta> list = new AssemblerReceta().ConvertListENToModel(listRecetaEN).ToList();
             SessionClose();
-            return View(cen.VerUltimasRecetas());
+            return View(list);
         }
 
     }
