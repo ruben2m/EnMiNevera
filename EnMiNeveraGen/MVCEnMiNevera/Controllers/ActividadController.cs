@@ -11,7 +11,7 @@ using EnMiNeveraGenNHibernate.EN.EnMiNevera;
 
 namespace MVCEnMiNevera.Controllers
 {
-    public class ActividadController : Controller
+    public class ActividadController : BasicController
     {
         // GET: Actividad
         public ActionResult Index()
@@ -92,25 +92,29 @@ namespace MVCEnMiNevera.Controllers
         }
 
         // GET: Actividad/Ver
-        public ActionResult Actividad(int id)
+        public ActionResult  Ver(int id)
         {
             SessionInitialize();
             UsuarioEN usuEN = new UsuarioCAD(session).ReadOIDDefault(id);
             IList<UsuarioEN> listSeguidosEn = usuEN.Seguidos;
-            IList<UsuarioEN> seguidosDeSeguidos = null;
-            
+            IList<UsuarioEN> seguidosDeSeguidos = new List<UsuarioEN>();
+            IList<UsuarioEN> seguidos = new List<UsuarioEN>();
+
 
             foreach (UsuarioEN usu in listSeguidosEn)
             {
-                foreach(UsuarioEN usuSeguidos in usu.Seguidos)
-                {
-                    seguidosDeSeguidos.Add(usuSeguidos);
-                }
-                //seguidosDeSeguidos.Add(usu.Seguidos);
+                seguidos.Add(usu);
+                //foreach(UsuarioEN usuSeguidos in usu.Seguidos)
+                //{
+                    //seguidosDeSeguidos.Add(usuSeguidos);
+                    //seguidosDeSeguidos.Add(usu);
+                //}
+
             }
 
-            IEnumerable<Usuario> usuActividad = new AssemblerUsuario().ConvertListENToModel(seguidosDeSeguidos).ToList();
-            
+            IEnumerable<Usuario> usuActividad = new AssemblerUsuario().ConvertListENToModel(seguidos).ToList();
+            //IEnumerable<Usuario> usuDeQuien = new AssemblerUsuario().ConvertListENToModel(seguidos).ToList();
+
             SessionClose();
             return View(usuActividad);
         }

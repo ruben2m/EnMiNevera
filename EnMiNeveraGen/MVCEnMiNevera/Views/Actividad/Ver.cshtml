@@ -9,10 +9,10 @@
 <table class="table">
 
     @foreach (var item in Model)
-            {
+    {
         <tr>
             <td>
-                @Html.DisplayFor(model => item.Usuario) ha seguido a Tal
+                -@Html.DisplayFor(model => item.Nombre) ha seguido a @Html.DisplayFor(model => item.Seguidos)
             </td>
         </tr>
     }
