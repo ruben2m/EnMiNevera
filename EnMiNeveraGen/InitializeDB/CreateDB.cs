@@ -208,7 +208,11 @@ public static void InitializeData ()
 
                 System.Console.WriteLine ("\n\n ----- INICIO: seguir usuarios ------------------------------------------\n");
                 usuarioCEN.Seguir (oid1, oid2);
+                usuarioCEN.Seguir (oid1, oid3);
                 usuarioCEN.Seguir (oid3, oid1);
+                usuarioCEN.Seguir (oid2, oid1);
+                usuarioCEN.Seguir (oid2, oid3);
+                usuarioCEN.Seguir (oid3, oid2);
                 System.Console.WriteLine ("\n ----- FIN: seguir usuarios ------------------------------------------\n\n\n");
 
 

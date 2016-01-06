@@ -50,7 +50,8 @@
                             recetas = "active";
                     }
                     <li class="@inicio">@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li class="@actividad">@Html.ActionLink("Actividad", "Index", "Home")<li>
+                    @*<li class="@actividad">@Html.ActionLink("Actividad", "Index", "Home")<li>*@
+                    <li class="@actividad"><a href="/Actividad/Ver/1">Actividad</a><li>
                     <li class="@recetas">@Html.ActionLink("Recetas", "Ultimas", "Receta")</li>
                 </ul>
                 @if (Request.IsAuthenticated)
