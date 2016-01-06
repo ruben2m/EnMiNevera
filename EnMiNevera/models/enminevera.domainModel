@@ -201,7 +201,7 @@
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_aqdlkHytEeW7XKqJGQIfdg" name="destroy" operationType="Destroy" type="Void">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_9iGyw40oEeWxpcJ8nY0S-Q" name="p_Ingrediente_OID" type="OID" typeObject="_Xdj-AHyoEeW7XKqJGQIfdg"/>
       </operations>
-      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_bO8PIIn0EeW49dwC-z5YAQ" name="verNubeIngredientes" operationType="ReadFilter" type="Object" collectionType="List" typeObject="_Xdj-AHyoEeW7XKqJGQIfdg" filter="SELECT ing, COUNT(lin) FROM IngredienteEN ing LEFT JOIN ing.LineasIngrediente lin GROUP BY ing.Id, ing.Nombre ORDER BY COUNT(lin) DESC" automaticSynchronize="false"/>
+      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_bO8PIIn0EeW49dwC-z5YAQ" name="verNubeIngredientes" operationType="ReadFilter" description="SELECT ing, COUNT(lin) FROM IngredienteEN ing LEFT JOIN ing.LineasIngrediente lin GROUP BY ing.Id, ing.Nombre ORDER BY COUNT(lin) DESC&#xD;&#xA;&#xD;&#xA;No puede devolver el COUNT(lin)" type="Object" collectionType="List" typeObject="_Xdj-AHyoEeW7XKqJGQIfdg" filter="SELECT ing FROM IngredienteEN ing LEFT JOIN ing.LineasIngrediente lin GROUP BY ing.Id, ing.Nombre ORDER BY COUNT(lin) DESC TAKE 12" automaticSynchronize="false"/>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_qMuaAI1KEeWTjMarBcy6Yw" name="getPorNombre" operationType="ReadFilter" type="Object" typeObject="_Xdj-AHyoEeW7XKqJGQIfdg" filter="FROM IngredienteEN ing WHERE ing.Nombre = :p_nombre" automaticSynchronize="false">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_xq3mkI1KEeWTjMarBcy6Yw" name="p_nombre"/>
       </operations>

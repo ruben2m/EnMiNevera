@@ -257,16 +257,15 @@
     <Content Include="Views\ListaCompra\Index.cshtml" />
     <Content Include="Views\Receta\Ultimas.cshtml" />
     <Content Include="Views\Receta\_FormComentarios.cshtml" />
-    <Content Include="Views\Ingrediente\Nube.cshtml" />
     <Content Include="Views\Receta\Crear.cshtml" />
     <Content Include="Views\Receta\_FormReceta.cshtml" />
     <Content Include="Views\Receta\Index.cshtml" />
     <Content Include="Views\Receta\_FormLineaIngrediente.cshtml" />
     <Content Include="Views\Receta\_FormPasos.cshtml" />
     <Content Include="Views\Ingrediente\Index.cshtml" />
-    <Content Include="Views\Receta\Ultimas.cshtml" />
     <Content Include="Views\Receta\BuscaPorIngrediente.cshtml" />
     <Content Include="Views\Receta\_VerReceta.cshtml" />
+    <Content Include="Views\Ingrediente\_Nube.cshtml" />
     <None Include="Views\Usuario\Perfil.cshtml" />
   </ItemGroup>
   <ItemGroup>

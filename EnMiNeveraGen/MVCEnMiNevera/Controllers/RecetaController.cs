@@ -228,10 +228,19 @@ namespace MVCEnMiNevera.Controllers
                     idsIngredientes.Add(ingredienteEn.Id);
             }
 
-            RecetaCAD cad = new RecetaCAD(session);
-            RecetaCEN cen = new RecetaCEN(cad);
-            IList<RecetaEN> listEn = cen.BuscarPorIngrediente(idsIngredientes);
-            IList<Receta> list = new AssemblerReceta().ConvertListENToModel(listEn);
+            IList<Receta> list = null;
+            if (idsIngredientes.Count() > 0)
+            {
+                RecetaCAD cad = new RecetaCAD(session);
+                RecetaCEN cen = new RecetaCEN(cad);
+                IList<RecetaEN> listEn = cen.BuscarPorIngrediente(idsIngredientes);
+                list = new AssemblerReceta().ConvertListENToModel(listEn);
+            }
+            else
+            {
+                list = new List<Receta>();
+            }
+
 
             SessionClose();
 

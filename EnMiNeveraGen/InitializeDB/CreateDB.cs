@@ -154,8 +154,11 @@ public static void InitializeData ()
                  *
                  * System.Console.WriteLine("\n ha funcionado SIIIIIIIIII ...................\n");
                  * System.Console.ReadLine ();
-                 */
 
+                ingredienteCen.VerNubeIngredientes ();
+                System.Console.WriteLine ("\n ha funcionado SIIIIIIIIII ...................\n");
+                System.Console.ReadLine ();
+                 */
 
 
 

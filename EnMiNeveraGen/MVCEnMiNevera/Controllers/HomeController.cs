@@ -3,14 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MVCEnMiNevera.Filters;
+using MVCEnMiNevera.Models;
+using EnMiNeveraGenNHibernate.CEN.EnMiNevera;
+using EnMiNeveraGenNHibernate.EN.EnMiNevera;
+using EnMiNeveraGenNHibernate.CAD.EnMiNevera;
+using EnMiNeveraGenNHibernate.Enumerated.EnMiNevera;
 
 namespace MVCEnMiNevera.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BasicController
     {
         public ActionResult Index()
         {
-            return View();
+            SessionInitialize();
+            IngredienteCEN ingredienteCen = new IngredienteCEN();
+            IList<Ingrediente> ingredientes = new AssemblerIngrediente().ConvertListENToModel(ingredienteCen.VerNubeIngredientes());
+            SessionClose();
+            return View(ingredientes);
         }
 
         public ActionResult About()

@@ -162,7 +162,7 @@ public System.Collections.Generic.IList<EnMiNeveraGenNHibernate.EN.EnMiNevera.In
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM IngredienteEN self where SELECT ing, COUNT(lin) FROM IngredienteEN ing LEFT JOIN ing.LineasIngrediente lin GROUP BY ing.Id, ing.Nombre ORDER BY COUNT(lin) DESC";
+                //String sql = @"FROM IngredienteEN self where SELECT ing FROM IngredienteEN ing LEFT JOIN ing.LineasIngrediente lin GROUP BY ing.Id, ing.Nombre ORDER BY COUNT(lin) DESC TAKE 12";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("IngredienteENverNubeIngredientesHQL");
 

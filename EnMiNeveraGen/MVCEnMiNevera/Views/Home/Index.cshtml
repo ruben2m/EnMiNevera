@@ -1,14 +1,7 @@
-<<<<<<< HEAD
 ﻿@model IEnumerable<MVCEnMiNevera.Models.Ingrediente>
-    @{
-        ViewBag.Title = "Home Page";
-    }
-=======
-﻿
 @{
     ViewBag.Title = "Inicio";
 }
->>>>>>> 0ed58dc32f886fdf8ce885545eac00fd95337091
 
 <div class="busca jumbotron">
     <h1>Busca por Ingredientes</h1>
@@ -17,39 +10,14 @@
         <div class="form-group">
             <input type="text" class="form-control input-block" placeholder="Ingredientes" data-role="tagsinput">
         </div>
-<<<<<<< HEAD
-
-    </div>
-    <div class="row">
-        <div class="col-lg-6 col-lg-offset-3 col-xs-6 col-xs-offset-3">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Ingredientes" data-role="tagsinput">
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">Buscar</button>
-                </span>
-            </div>
-        </div>
-    </div>
-    <div id="demo" class="wordcloud">
-        <span data-weight="91"> Chocolate </span>
-        <span data-weight="21"> Tomate </span>
-        <span data-weight="41"> Huevo </span>
-        <span data-weight="13"> Nueces </span>
-        <span data-weight="78"> Uvas </span>
-    </div>
-    @Html.Partial("../Ingrediente/Nube", Model);
-
-
-
-
-=======
         <p>
             <button id="btn-busca-por-ingrediente" class="btn btn-success btn-block btn-lg" type="button">Buscar</button>
         </p>
     </form>
+
 </div>
 
-@Html.Partial("../Ingrediente/Index");
+@Html.Partial("../Ingrediente/_Nube", Model);
 @* Cons, si aqui no le pasas nada, a la vista no le llega ningún modelo, por lo que hace un null. tienes que hacer Html.Partial("...", ingredientes)
     siendo ingredientes algo que lo calcules en el controller. Por que ahora, ¿que recorres? Si no le estás pasando nada. *@
 
@@ -74,4 +42,3 @@
         })
     </script>
 } 
->>>>>>> 0ed58dc32f886fdf8ce885545eac00fd95337091

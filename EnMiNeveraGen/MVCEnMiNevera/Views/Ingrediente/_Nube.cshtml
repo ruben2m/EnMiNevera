@@ -1,0 +1,14 @@
+﻿@model IList<MVCEnMiNevera.Models.Ingrediente>
+@{
+    Layout = null;
+}
+
+<div class="row">
+    <div id="demo" class="wordcloud">
+        @foreach (var item in Model)
+        {
+            <span data-weight="21"> @Html.DisplayFor(model => item.Nombre)</span>
+        }
+    </div>
+
+</div>

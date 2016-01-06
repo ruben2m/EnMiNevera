@@ -48,7 +48,7 @@
 		 </class>	
 		  
 		  <query name="IngredienteENReadAllHQL">from IngredienteEN</query>
-		  <query name="IngredienteENverNubeIngredientesHQL"><![CDATA[SELECT ing, COUNT(lin) FROM IngredienteEN ing LEFT JOIN ing.LineasIngrediente lin GROUP BY ing.Id, ing.Nombre ORDER BY COUNT(lin) DESC]]></query>
+		  <query name="IngredienteENverNubeIngredientesHQL"><![CDATA[SELECT ing FROM IngredienteEN ing LEFT JOIN ing.LineasIngrediente lin GROUP BY ing.Id, ing.Nombre ORDER BY COUNT(lin) DESC TAKE 12]]></query>
 		  <query name="IngredienteENgetPorNombreHQL"><![CDATA[FROM IngredienteEN ing WHERE ing.Nombre = :p_nombre]]></query>
 		</hibernate-mapping>
 	
