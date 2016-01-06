@@ -1,7 +1,7 @@
-﻿
-@{
-    ViewBag.Title = "Home Page";
-}
+﻿@model IEnumerable<MVCEnMiNevera.Models.Ingrediente>
+    @{
+        ViewBag.Title = "Home Page";
+    }
 
 
     <div class="row">
@@ -15,28 +15,27 @@
 
             </div>
         </div>
-        
+
     </div>
-<div class="row">
-    <div class="col-lg-6 col-lg-offset-3 col-xs-6 col-xs-offset-3">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Ingredientes" data-role="tagsinput">
-            <span class="input-group-btn">
-                <button class="btn btn-default" type="button">Buscar</button>
-            </span>
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3 col-xs-6 col-xs-offset-3">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Ingredientes" data-role="tagsinput">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Buscar</button>
+                </span>
+            </div>
         </div>
     </div>
-</div>
-<div id="demo" class="wordcloud">
-    <span data-weight="91"> Chocolate </span>
-    <span data-weight="21"> Tomate </span>
-    <span data-weight="41"> Huevo </span>
-    <span data-weight="13"> Nueces </span>
-    <span data-weight="78"> Uvas </span>
-</div>
-    @Html.Partial("../Ingrediente/Index");
+    <div id="demo" class="wordcloud">
+        <span data-weight="91"> Chocolate </span>
+        <span data-weight="21"> Tomate </span>
+        <span data-weight="41"> Huevo </span>
+        <span data-weight="13"> Nueces </span>
+        <span data-weight="78"> Uvas </span>
+    </div>
+    @Html.Partial("../Ingrediente/Nube", Model);
 
-    
 
-    
-    
+
+

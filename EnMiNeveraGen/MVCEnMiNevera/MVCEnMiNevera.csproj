@@ -253,7 +253,7 @@
     <Content Include="Views\ListaCompra\Index.cshtml" />
     <Content Include="Views\Receta\Ultimas.cshtml" />
     <Content Include="Views\Receta\_FormComentarios.cshtml" />
-    <Content Include="Views\Ingrediente\Index.cshtml" />
+    <Content Include="Views\Ingrediente\Nube.cshtml" />
     <None Include="Views\Usuario\Perfil.cshtml" />
   </ItemGroup>
   <ItemGroup>

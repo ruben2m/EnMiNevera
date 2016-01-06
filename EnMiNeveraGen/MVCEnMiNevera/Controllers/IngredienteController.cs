@@ -15,14 +15,7 @@ namespace MVCEnMiNevera.Controllers
         // GET: Ingrediente
         public ActionResult Index()
         {
-           SessionInitialize();
-
-            IngredienteCAD ingCAD = new IngredienteCAD(session);
-            IngredienteCEN cen = new IngredienteCEN(ingCAD);
-            IList<IngredienteEN> listIngredienteEN = cen.VerNubeIngredientes();
-            IEnumerable<Ingrediente> list = new AssemblerIngrediente().ConvertListENToModel(listIngredienteEN).ToList();
-            SessionClose();
-            return View(list);
+            return View();
         }
 
         // GET: Ingrediente/Details/5
@@ -95,6 +88,19 @@ namespace MVCEnMiNevera.Controllers
             {
                 return View();
             }
+        }
+        // GET: Ingrediente/Nube
+        public ActionResult Nube()
+        {
+            SessionInitialize();
+
+            IngredienteCAD ingCAD = new IngredienteCAD(session);
+            LineaIngredienteCAD linCAD = new LineaIngredienteCAD(session);
+            IngredienteCEN cen = new IngredienteCEN(ingCAD);
+            IList<IngredienteEN> listIngredienteEN = cen.VerNubeIngredientes();
+            IEnumerable<Ingrediente> list = new AssemblerIngrediente().ConvertListENToModel(listIngredienteEN).ToList();
+            SessionClose();
+            return View(list);
         }
     }
 }
