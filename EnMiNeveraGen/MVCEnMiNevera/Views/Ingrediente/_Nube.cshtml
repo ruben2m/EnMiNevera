@@ -5,9 +5,15 @@
 
 <div class="row">
     <div id="demo" class="wordcloud">
-        @foreach (var item in Model)
-        {
-            <span data-weight="21"> @Html.DisplayFor(model => item.Nombre)</span>
+        @{ 
+            int maximo = Model.Count();
+
+            foreach (var item in Model)
+            {
+                <span data-weight="@maximo"> @Html.DisplayFor(model => item.Nombre)</span>
+
+                maximo -= 1;
+            }
         }
     </div>
 
