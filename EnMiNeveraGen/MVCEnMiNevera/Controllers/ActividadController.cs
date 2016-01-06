@@ -103,20 +103,21 @@ namespace MVCEnMiNevera.Controllers
 
             foreach (UsuarioEN usu in listSeguidosEn)
             {
+                //seguidos.Add(usu);
+                foreach(UsuarioEN usuSeguidos in usu.Seguidos)
+                {
+                    seguidosDeSeguidos.Add(usuSeguidos);
+                    
+                }
                 seguidos.Add(usu);
-                //foreach(UsuarioEN usuSeguidos in usu.Seguidos)
-                //{
-                    //seguidosDeSeguidos.Add(usuSeguidos);
-                    //seguidosDeSeguidos.Add(usu);
-                //}
 
             }
 
-            IEnumerable<Usuario> usuActividad = new AssemblerUsuario().ConvertListENToModel(seguidos).ToList();
-            //IEnumerable<Usuario> usuDeQuien = new AssemblerUsuario().ConvertListENToModel(seguidos).ToList();
+            IEnumerable<Usuario> usuActividad = new AssemblerUsuario().ConvertListENToModel(seguidosDeSeguidos).ToList();
+            IEnumerable<Usuario> usuDeQuien = new AssemblerUsuario().ConvertListENToModel(seguidos).ToList();
 
             SessionClose();
-            return View(usuActividad);
+            return View(Tuple.Create(usuDeQuien, usuActividad));
         }
     }
 }

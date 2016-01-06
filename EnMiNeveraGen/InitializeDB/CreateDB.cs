@@ -90,7 +90,7 @@ public static void InitializeData ()
                 System.Console.WriteLine ("\n ----- FIN: creamos usuarios ------------------------------------------\n\n\n");
 
 
-
+                
                 System.Console.WriteLine ("\n\n ----- INICIO: creamos recetas ------------------------------------------\n");
                 RecetaCEN recetaCEN = new RecetaCEN ();
                 int receta_oid1 = recetaCEN.New_ ("Nom receta1", "descrip", "http://www.recetas.ninja/wp-content/uploads/2015/09/comida-rapida-dibujos-de-los-usuarios-pintado-por-sango-9836819-256x256.jpg", oid1, DateTime.Now, EnMiNeveraGenNHibernate.Enumerated.EnMiNevera.EstadosEnum.publicado);
@@ -185,15 +185,14 @@ public static void InitializeData ()
                 usuarioCEN.GuardarFavorito (oid1, receta_oid4);
                 usuarioCEN.GuardarFavorito (oid1, receta_oid6);
                 System.Console.WriteLine ("\n ----- FIN: recetas favoritas ------------------------------------------\n\n\n");
-
+                
 
                 System.Console.WriteLine ("\n\n ----- INICIO: seguir usuarios ------------------------------------------\n");
                 usuarioCEN.Seguir (oid1, oid2);
-                usuarioCEN.Seguir (oid3, oid1);
                 usuarioCEN.Seguir (oid1, oid3);
-                usuarioCEN.Seguir (oid3, oid2);
                 usuarioCEN.Seguir (oid2, oid1);
                 usuarioCEN.Seguir (oid2, oid3);
+                usuarioCEN.Seguir (oid3, oid2);
                 System.Console.WriteLine ("\n ----- FIN: seguir usuarios ------------------------------------------\n\n\n");
 
 
@@ -212,7 +211,7 @@ public static void InitializeData ()
                 int idLineaListaCompra2_3 = lineaListaCompraCen.New_ (200, UnidadesEnum.mililitros, idAceite, idListaCompra2, false);
                 System.Console.WriteLine ("\n ----- FIN: ListaCompra ------------------------------------------\n\n\n");
 
-
+                
 
 
                 //recetaCen.New_("Macarrones con queso", "Macarrones gratinados de la abuela", "/foto.png", 0123, new TimeSpan(1, 12, 5, 00), EnMiNeveraGenNHibernate.Enumerated.EnMiNevera.EstadosEnum.publicado);

@@ -1,20 +1,24 @@
-﻿@model IEnumerable<MVCEnMiNevera.Models.Usuario>
+﻿@model Tuple< IEnumerable<MVCEnMiNevera.Models.Usuario>, IEnumerable<MVCEnMiNevera.Models.Usuario>>
+    >
 
-@{
-    ViewBag.Title = "Ver";
-}
-
-<h2>Ver actividad</h2>
-
-<table class="table">
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                -@Html.DisplayFor(model => item.Nombre) ha seguido a @Html.DisplayFor(model => item.Seguidos)
-            </td>
-        </tr>
+    @{
+        ViewBag.Title = "Ver";
     }
 
-</table>
+    <h2>Ver actividad</h2>
+
+    <table class="table">
+
+        @foreach (var item in Model.Item1)
+        {
+            foreach (var item2 in Model.Item2)
+            {
+            <tr>
+                <td>
+                    -@Html.DisplayFor(model => item.Nick) ha seguido a @Html.DisplayFor(model => item2.Nick)
+                </td>
+            </tr>
+            }
+        }
+
+    </table>
