@@ -9,3 +9,5 @@ EnMiNeveraGen/InitializeDB/obj/x86/
 EnMiNeveraGen/MVCEnMiNevera/obj/
 EnMiNeveraGen/packages/
 EnMiNeveraGen/MVCEnMiNevera/Images/Uploads/
+EnMiNeveraGen/EnMiNeveraGENCP/bin/Debug/*
+EnMiNeveraGen/EnMiNeveraGenNHibernate/bin/Debug/*
