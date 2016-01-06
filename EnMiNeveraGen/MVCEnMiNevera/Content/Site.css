@@ -66,3 +66,59 @@ textarea {
     font-size: 100%;
     line-height: inherit;
 }
+
+.tituloregistro{
+    padding-top: 3%;
+}
+.botonregistro{
+    background-color: mediumseagreen;
+    color: white;
+}
+.botonregistro:hover{
+    background-color: yellowgreen;
+    color: white;
+}
+.imagenregistro{
+    position: absolute;
+    top: 2px;
+    left: 62%;
+}
+
+﻿
+.buscarreceta{
+    padding-top:5%;
+    width:100%;
+}
+.botonbuscar{
+    background-color:forestgreen;
+    color: white;
+}
+.botonbuscar:hover{
+    background-color: darkolivegreen;
+    color: white;
+}
+.recetasult{
+    padding-top: 5%;
+    width: 100%;
+    font-family: Verdana, sans-serif;
+}
+.grupobusqueda{
+    padding-top:2%;
+}
+a:hover{
+    color: limegreen;
+}
+.botoncrear{
+    border-radius: 5px;
+    background-color: mediumseagreen;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+.botoncrear:hover{
+    background-color: yellowgreen;
+}
+.anyadirreceta{
+    text-align:center;
+    font-weight: bold;
+    color: dimgrey;
+}

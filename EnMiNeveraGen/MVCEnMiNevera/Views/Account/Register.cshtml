@@ -3,77 +3,78 @@
     ViewBag.Title = "Registro";
 }
 
-<h2>@ViewBag.Title.</h2>
+<h2 class="tituloregistro">@ViewBag.Title</h2>
 
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <h4>Cree una cuenta nueva.</h4>
+    <h4 class="tituloregistro">Cree una cuenta nueva</h4>
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Nick, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Nick, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Nombre, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Nombre, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Apellidos, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Apellidos, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Contrasena, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Contrasena, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmaContrasena, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmaContrasena, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Biografia, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextAreaFor(m => m.Biografia, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.FechaNacim, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.FechaNacim, new { @class = "form-control" })
-        </div>
-    </div>
-    /*<div class="form-group">
-        <form enctype="multipart/form-data" action="" method="POST">
-            <input name="uploadedfile" type="file" />
-            <input type="submit" value="Subir archivo" />
-        </form>
-    </div>*/
-    /*<div class="form-group">
-        @Html.LabelFor(m => m.Foto, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.(m => m.Foto, new { @class = "form-control" })
-        </div>
-    </div>*/
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Registrarse" />
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Nick, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.Nick, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Nombre, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.Nombre, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Apellidos, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.Apellidos, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Contrasena, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.PasswordFor(m => m.Contrasena, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.ConfirmaContrasena, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.PasswordFor(m => m.ConfirmaContrasena, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Biografia, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(m => m.Biografia, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.FechaNacim, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.FechaNacim, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Foto, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="file" name="file" />
+                </div>
+            </div>
+            <div class="imagenregistro">
+                <img src="data:image/png;base64,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" />            </div>
+            <div class="form-group">
+                    <input type="submit" class="btn btn-default pull-right botonregistro" value="Registrarse" />
+           
+            </div>
+            
+
         </div>
     </div>
 }
