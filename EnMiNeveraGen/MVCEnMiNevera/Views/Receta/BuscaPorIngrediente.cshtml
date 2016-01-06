@@ -1,0 +1,23 @@
+﻿@model IList<MVCEnMiNevera.Models.Receta>
+@{
+    ViewBag.Title = "BuscaPorIngrediente";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <h3>
+            Resultado de la búsqueda de: 
+            @foreach (string i in (string[])ViewData["ingredientes"])
+            {
+                <text>@i </text>                
+            }
+        </h3>
+        <hr />
+    </div>
+    <div class="col-xs-12">
+        @foreach(var item in Model)
+        {
+            @Html.Partial("_VerReceta", item)
+        }
+    </div>
+</div>

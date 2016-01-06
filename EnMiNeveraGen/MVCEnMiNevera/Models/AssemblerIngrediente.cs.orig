@@ -13,9 +13,12 @@ namespace MVCEnMiNevera.Models
             Ingrediente model = new Ingrediente();
             model.id = en.Id;
             model.Nombre = en.Nombre;
+<<<<<<< HEAD
+=======
             model.LineasIngrediente = en.LineasIngrediente.ToList();
             model.LineasListaCompra = en.LineasListaCompra.ToList();
 
+>>>>>>> 7ce0b3ba8ce1749e193ceabafe6dd894f9a6b944
 
             return model;
         }
@@ -30,4 +33,8 @@ namespace MVCEnMiNevera.Models
         }
     }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 7ce0b3ba8ce1749e193ceabafe6dd894f9a6b944

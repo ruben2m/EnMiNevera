@@ -1,5 +1,4 @@
-﻿@model IList<MVCEnMiNevera.Models.Comentario>
-
+﻿@model MVCEnMiNevera.Models.Comentario
 
 @* /////////////////////////////////////////// *@
 @* Formulario de comentarios *@
@@ -15,9 +14,9 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             <div class="col-md-12">
-                @Html.TextAreaFor(model => model.First().ComentarioTexto, 5, 20,  new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.First().ComentarioTexto, "", new { @class = "text-danger" })
-                @Html.HiddenFor(model => model.First().IdReceta)
+                @Html.TextAreaFor(model => model.ComentarioTexto, 5, 20,  new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ComentarioTexto, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.IdReceta)
             </div>
         </div>
 

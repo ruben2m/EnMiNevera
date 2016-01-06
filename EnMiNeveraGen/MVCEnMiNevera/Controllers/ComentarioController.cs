@@ -18,21 +18,14 @@ namespace MVCEnMiNevera.Controllers
         [HttpPost]
         public ActionResult Create(Comentario comentario, int idReceta)
         {
-            try
-            {
-                // Obtenemos usuario actual
-                UsuarioEN usuarioEn = new UsuarioCAD().GetByNick(User.Identity.Name);
+            // Obtenemos usuario actual
+            UsuarioEN usuarioEn = new UsuarioCAD().GetByNick(User.Identity.Name);
 
-                comentario.Fecha = DateTime.Now;
+            comentario.Fecha = DateTime.Now;
 
-                int id = new ComentarioCEN().New_(usuarioEn.Id, idReceta, comentario.ComentarioTexto, comentario.Fecha);
+            int id = new ComentarioCEN().New_(usuarioEn.Id, idReceta, comentario.ComentarioTexto, comentario.Fecha);
 
-                return RedirectToAction("ver", "receta", new { id = idReceta });
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("ver", "receta", new { id = idReceta });
         }
 
         // GET: Comentario/Delete/5

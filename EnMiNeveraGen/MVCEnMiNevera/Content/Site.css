@@ -4,7 +4,7 @@
 }
 
 body {
-    padding-top: 50px;
+    padding-top: 60px;
     padding-bottom: 20px;
     margin-bottom: 110px;
 }
@@ -47,4 +47,22 @@ textarea {
     position: absolute;
     bottom: 0;
     width: 100%;
+}
+
+.busca.jumbotron {
+    text-align: center;
+}
+
+.bootstrap-tagsinput {
+    line-height: 1.8em !important;
+    width: 100%;
+}
+
+.bootstrap-tagsinput input {
+    width: 100% !important;
+}
+
+.bootstrap-tagsinput > .label-info {
+    font-size: 100%;
+    line-height: inherit;
 }

@@ -211,10 +211,16 @@ public System.Collections.Generic.IList<EnMiNeveraGenNHibernate.EN.EnMiNevera.Re
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM RecetaEN self where SELECT re FROM RecetaEN re INNER JOIN re.LineasIngrediente lin INNER JOIN lin.Ingrediente ing WHERE ing.Id IN (:p_lista_ingredientes)";
+                //String sql = @"FROM RecetaEN self where SELECT DISTINCT re FROM RecetaEN re INNER JOIN re.LineasIngrediente lin INNER JOIN lin.Ingrediente ing WHERE ing.Id IN (:p_lista_ingredientes)";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("RecetaENbuscarPorIngredienteHQL");
-                query.SetParameter ("p_lista_ingredientes", p_lista_ingredientes);
+                /*PROTECTED REGION ID(initializeDataMethod) ENABLED START*/
+                //query.SetParameter ("p_lista_ingredientes", p_lista_ingredientes);
+                System.Collections.Generic.List<int> ids = new System.Collections.Generic.List<int>();
+                foreach (var p in p_lista_ingredientes)
+                    ids.Add(p);
+                query.SetParameterList("p_lista_ingredientes", ids);
+                /*PROTECTED REGION END*/
 
                 result = query.List<EnMiNeveraGenNHibernate.EN.EnMiNevera.RecetaEN>();
                 SessionCommit ();

@@ -8,13 +8,21 @@
         @using (Html.BeginForm())
         {
             <div class="input-group">
+<<<<<<< HEAD
                 @Html.TextBox("Search", "", new { @class = "form-control" })<!--<input type="search" class="form-control" placeholder="Búsqueda">-->
+=======
+                @Html.TextBox("Search","", new { @class = "form-control" })<!--<input type="search" class="form-control" placeholder="Búsqueda">-->
+>>>>>>> 7ce0b3ba8ce1749e193ceabafe6dd894f9a6b944
                 <span class="input-group-btn">
                     <button class="btn btn-default" type="submit">Buscar recetas</button>
                 </span>
             </div>
         }
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 7ce0b3ba8ce1749e193ceabafe6dd894f9a6b944
     </div>
     <div class="col-md-3 col-md-push-5">
         <p><button class="fa fa-plus-square fa-3x">@Html.ActionLink(" ", "Crear", "Receta")</button></p>
@@ -26,7 +34,11 @@
     <!--AQUÍ VA TODAS LAS ULTIMAS RECETAS-->
     <div class="col-md-2 col-sm-3 col-xs-12">
         <table class="table">
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> 7ce0b3ba8ce1749e193ceabafe6dd894f9a6b944
             @foreach (var item in Model)
             {
                 <tr>
@@ -40,9 +52,16 @@
                     </td>
                 </tr>
             }
+<<<<<<< HEAD
 
+        </table>
+    </div>
+</div>
+=======
+            
         </table>
     </div>
 </div>
 
 </div>
+>>>>>>> 7ce0b3ba8ce1749e193ceabafe6dd894f9a6b944

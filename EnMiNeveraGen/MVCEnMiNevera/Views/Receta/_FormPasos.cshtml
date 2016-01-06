@@ -1,0 +1,39 @@
+﻿@model MVCEnMiNevera.Models.Paso
+@{
+    Layout = null;
+}
+@*///////////////////////////////////////////////////////*@
+@* Esta es la ventana modal para añadir paso *@
+@*///////////////////////////////////////////////////////*@
+<div class="modal fade" id="modalAddPaso" tabindex="-1" role="dialog" aria-labelledby="Paso">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Añadir Paso</h4>
+            </div>
+
+            <form>
+                <div class="modal-body">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NumeroPaso, new { @class = "control-label" })
+                        @Html.EditorFor(model => model.NumeroPaso, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.NumeroPaso)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Descripcion, new { @class = "control-label" })
+                        @Html.TextAreaFor(model => model.Descripcion, 10, 10, new { @id = "DescripcionPaso", @name = "DescripcionPaso", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Descripcion)
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button id="btn-add-paso" type="button" class="btn btn-primary">Añadir</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@* Los Scripts necesarios estan en Crear ya que en partial no se puede acceder a sections *@

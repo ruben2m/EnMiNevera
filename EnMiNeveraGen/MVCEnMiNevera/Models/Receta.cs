@@ -49,13 +49,13 @@ namespace MVCEnMiNevera.Models
         public IList<UsuarioEN> UsuariosFavorito { get; set; }
 
         [ScaffoldColumn(false)]
-        public IList<PasosEN> Pasos { get; set; }
+        public IList<Paso> Pasos { get; set; }
 
         [ScaffoldColumn(false)]
         public IList<Comentario> Comentarios { get; set; }
 
         [ScaffoldColumn(false)]
-        public IList<LineaIngredienteEN> LineasIngrediente { get; set; }
+        public IList<LineaIngrediente> LineasIngrediente { get; set; }
 
         [ScaffoldColumn(false)]
         public IList<LineaListaCompraEN> LineasListaCompra { get; set; }
