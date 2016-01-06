@@ -92,17 +92,27 @@ namespace MVCEnMiNevera.Controllers
         }
 
         // GET: Actividad/Ver
-        public ActionResult Actividad()
+        public ActionResult Actividad(int id)
         {
             SessionInitialize();
-
-            UsuarioCAD usuCAD = new UsuarioCAD(session);
-            UsuarioCEN cen = new UsuarioCEN(usuCAD);
+            UsuarioEN usuEN = new UsuarioCAD(session).ReadOIDDefault(id);
+            IList<UsuarioEN> listSeguidosEn = usuEN.Seguidos;
+            IList<UsuarioEN> seguidosDeSeguidos = null;
             
-            IList<UsuarioEN> listActividad = cen.VerActividadSeguidos(1);//meter la id del usuario logueado
-            IEnumerable<Actividad> list = new AssemblerActividad().ConvertListENToModel(listActividad).ToList();
+
+            foreach (UsuarioEN usu in listSeguidosEn)
+            {
+                foreach(UsuarioEN usuSeguidos in usu.Seguidos)
+                {
+                    seguidosDeSeguidos.Add(usuSeguidos);
+                }
+                //seguidosDeSeguidos.Add(usu.Seguidos);
+            }
+
+            IEnumerable<Usuario> usuActividad = new AssemblerUsuario().ConvertListENToModel(seguidosDeSeguidos).ToList();
+            
             SessionClose();
-            return View(list);
+            return View(usuActividad);
         }
     }
 }

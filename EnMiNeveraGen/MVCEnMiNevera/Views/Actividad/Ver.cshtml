@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MVCEnMiNevera.Models.Actividad>
+﻿@model IEnumerable<MVCEnMiNevera.Models.Usuario>
 
 @{
     ViewBag.Title = "Ver";
@@ -12,10 +12,7 @@
             {
         <tr>
             <td>
-                @Html.DisplayFor(model => item.Usuario) ha 
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.Suceso)
+                @Html.DisplayFor(model => item.Usuario) ha seguido a Tal
             </td>
         </tr>
     }
