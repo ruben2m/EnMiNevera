@@ -16,24 +16,38 @@ public partial class UsuarioCEN
 {
 public bool Seguir (int p_oid, int p_usuario_a_seguir)
 {
-        /*PROTECTED REGION ID(EnMiNeveraGenNHibernate.CEN.EnMiNevera_Usuario_seguir) ENABLED START*/
+            /*PROTECTED REGION ID(EnMiNeveraGenNHibernate.CEN.EnMiNevera_Usuario_seguir) ENABLED START*/
 
-        // Write here your custom code...
+            // Write here your custom code...
 
-        using (ISession session = NHibernateHelper.OpenSession ())
-        {
-                using (var transaction = session.BeginTransaction ())
+            using (ISession session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
                 {
-                        UsuarioEN usuarioEn = new UsuarioCAD (session).ReadOIDDefault (p_oid);
-                        UsuarioEN usuarioASeguirEn = new UsuarioCAD (session).ReadOIDDefault (p_usuario_a_seguir);
+                    UsuarioEN usuarioEn = new UsuarioCAD(session).ReadOIDDefault(p_oid);
+                    UsuarioEN usuarioASeguirEn = new UsuarioCAD(session).ReadOIDDefault(p_usuario_a_seguir);
 
-                        usuarioEn.Seguidos.Add (usuarioASeguirEn);
 
-                        transaction.Commit ();
+
+                    if (!usuarioEn.Seguidos.Contains(usuarioASeguirEn))
+                    {
+                        usuarioEn.Seguidos.Add(usuarioASeguirEn);
+                        usuarioASeguirEn.Seguidores.Add(usuarioEn);
+                        //recetaEn.UsuariosFavorito.Add (usuarioEn);
+                    }
+                    else {
+                        usuarioASeguirEn.Seguidores.Remove(usuarioEn);
+                        usuarioEn.Seguidos.Remove(usuarioASeguirEn);
+                        //usuarioEn.Favoritos.Remove (recetaEn);
+                    }
+
+                    //usuarioEn.Seguidos.Add (usuarioASeguirEn);
+
+                    transaction.Commit();
                 }
-        }
+            }
 
-        return false;
+            return false;
 
 
 

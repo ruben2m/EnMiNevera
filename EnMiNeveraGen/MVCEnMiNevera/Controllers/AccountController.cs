@@ -98,9 +98,14 @@ namespace MVCEnMiNevera.Controllers
             if (ModelState.IsValid)
             {
                 // Intento de registrar al usuario
+                string imagesDir = "Images/Uploads";
+
+                string fileName = "", path = "";
 
                 try
                 {
+                    fileName = "/" + imagesDir + "/" + model.Foto;
+                    model.Foto = fileName;
                     // Invocamos a la lógica de negocio para crear un cliente.
                     UsuarioCEN cen = new UsuarioCEN();
                     cen.New_(model.Nombre, model.Contrasena, model.Email, model.Apellidos, model.Nick, model.Foto, model.Biografia, model.FechaNacim, false, RolesEnum.usuario);

@@ -58,7 +58,8 @@
                 {
                     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { @id = "logoutForm", @class = "navbar-form navbar-right" }))
                     {
-                        <span>¡Hola @Html.ActionLink(User.Identity.Name, "perfil", "usuario", routeValues: null, htmlAttributes: new { @class = "username", title = "Administrar" })!</span>
+                        <span>¡Hola <a class="username" href="/usuario/perfil" title="Administrar">@User.Identity.Name</a>!</span>
+                        @*@Html.ActionLink(User.Identity.Name, "perfil", "usuario", routeValues: null, htmlAttributes: new { @class = "username", title = "Administrar" })*@
                         @Html.AntiForgeryToken()
                         <a href="javascript:document.getElementById('logoutForm').submit()">Salir</a>
                     }

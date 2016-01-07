@@ -23,17 +23,30 @@ namespace MVCEnMiNevera.Controllers
             return View();
         }
 
-        // GET: Usuario/Details/5
+        // GET: Usuario/Perfil/5
         [Authorize]
         //[InitializeSimpleMembership]
-        public ActionResult Perfil()
+        public ActionResult Perfil(int id = -1)
         {
             SessionInitialize();
 
             //int id = 1; // TODO poner el id a currentUser
             //int id = WebSecurity.GetUserId(User.Identity.Name);
             //UsuarioEN en = new UsuarioCAD(session).ReadOIDDefault(id);
-            UsuarioEN en = new UsuarioCAD(session).GetByNick(User.Identity.Name);
+            UsuarioEN en = null;
+            UsuarioEN usuarioActualEn = new UsuarioCAD(session).GetByNick(User.Identity.Name);
+            if(id==-1)
+            {
+                en = usuarioActualEn;
+            }
+            else
+            {
+                en = new UsuarioCAD(session).ReadOIDDefault(id);
+            }
+
+            ViewData["usuarioActual"] = (en.Nick == User.Identity.Name);
+
+            ViewData["siguiendo"] = (usuarioActualEn.Seguidos.Contains(en));
 
             Usuario usuario = new AssemblerUsuario().ConvertENToModelUI(en);
 
@@ -43,6 +56,23 @@ namespace MVCEnMiNevera.Controllers
             SessionClose();
 
             return View(usuario);
+        }
+
+        // GET: Usuario/Seguir/5
+        [Authorize]
+        public ActionResult seguir(int id)
+        {
+            SessionInitialize();
+
+            UsuarioCAD usuarioCad = new UsuarioCAD(session);
+
+            UsuarioEN usuarioEn = usuarioCad.GetByNick(User.Identity.Name);
+
+            new UsuarioCEN(usuarioCad).Seguir(usuarioEn.Id, id);
+
+            SessionClose();
+
+            return RedirectToAction("perfil", new { id = id });
         }
 
         // GET: Usuario/Create

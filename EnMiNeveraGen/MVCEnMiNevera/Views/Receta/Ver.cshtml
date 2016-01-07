@@ -11,7 +11,7 @@
     <hr />
     <div class="row">
         <div class="col-xs-12">
-            @Html.DisplayFor(model => model.Nombre)
+            (<a href="/usuario/perfil/@Model.IdUsuario">@Html.DisplayFor(model => model.NombreUsuario)</a>): @Html.DisplayFor(model => model.Nombre)
         </div>
     </div>
     <div class="row">
