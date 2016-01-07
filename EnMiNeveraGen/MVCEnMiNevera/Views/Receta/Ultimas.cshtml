@@ -9,16 +9,19 @@
         {
             <div class="input-group buscarreceta">
                 @Html.TextBox("Search","", new { @class = "form-control" })<!--<input type="search" class="form-control" placeholder="Búsqueda">-->
-                <span class="input-group-btn">
-                    <button class="btn btn-default botonbuscar" type="submit">Buscar recetas</button>
-                </span>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default botonbuscar" type="submit">Buscar recetas</button>
+                    </span>
             </div>
         }
         
     </div>
     <div class="col-md-3 col-md-push-5 anyadirreceta">
-        <p><a class="btn botonbuscar" href="/receta/crear"><span class="glyphicon glyphicon-plus"></span></a></p>
-        <p>Añadir receta</p>
+        @if (Request.IsAuthenticated)
+        {
+            <p><a class="btn botonbuscar" href="/receta/crear"><span class="glyphicon glyphicon-plus"></span></a></p>
+            <p>Añadir receta</p>
+        }
     </div>
 </div>
 

@@ -14,6 +14,7 @@ using EnMiNeveraGenNHibernate.CEN.EnMiNevera;
 using EnMiNeveraGenNHibernate.EN.EnMiNevera;
 using EnMiNeveraGenNHibernate.CAD.EnMiNevera;
 using EnMiNeveraGenNHibernate.Enumerated.EnMiNevera;
+using System.IO;
 
 
 namespace MVCEnMiNevera.Controllers
@@ -93,7 +94,7 @@ namespace MVCEnMiNevera.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(RegisterModel model)
+        public ActionResult Register(RegisterModel model, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
@@ -102,9 +103,19 @@ namespace MVCEnMiNevera.Controllers
 
                 string fileName = "", path = "";
 
+                if (file != null && file.ContentLength > 0)
+                {
+                    // extract only the fielname
+                    fileName = System.IO.Path.GetFileName(file.FileName);
+                    // store the file inside ~/App_Data/uploads folder
+                    path = Path.Combine(Server.MapPath("~/"+imagesDir), fileName);
+                    //string pathDef = path.Replace(@"\\", @"\");
+                    file.SaveAs(path);
+                }
+
                 try
                 {
-                    fileName = "/" + imagesDir + "/" + model.Foto;
+                    fileName = "/" + imagesDir + "/" + fileName;
                     model.Foto = fileName;
                     // Invocamos a la lógica de negocio para crear un cliente.
                     UsuarioCEN cen = new UsuarioCEN();
