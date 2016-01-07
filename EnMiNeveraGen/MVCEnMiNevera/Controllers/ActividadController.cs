@@ -97,27 +97,25 @@ namespace MVCEnMiNevera.Controllers
             SessionInitialize();
             UsuarioEN usuEN = new UsuarioCAD(session).ReadOIDDefault(id);
             IList<UsuarioEN> listSeguidosEn = usuEN.Seguidos;
-            IList<UsuarioEN> seguidosDeSeguidos = new List<UsuarioEN>();
+            IList<String> seguidosDeSeguidos = new List<String>();
             IList<UsuarioEN> seguidos = new List<UsuarioEN>();
 
 
             foreach (UsuarioEN usu in listSeguidosEn)
             {
-                //seguidos.Add(usu);
+                seguidos.Add(usu);
                 foreach(UsuarioEN usuSeguidos in usu.Seguidos)
                 {
-                    seguidosDeSeguidos.Add(usuSeguidos);
+                    seguidosDeSeguidos.Add(usuSeguidos.Nick);
                     
                 }
-                seguidos.Add(usu);
-
             }
 
-            IEnumerable<Usuario> usuActividad = new AssemblerUsuario().ConvertListENToModel(seguidosDeSeguidos).ToList();
-            IEnumerable<Usuario> usuDeQuien = new AssemblerUsuario().ConvertListENToModel(seguidos).ToList();
+            //IEnumerable<Usuario> usuActividad = new AssemblerUsuario().ConvertListENToModel(seguidosDeSeguidos).ToList();
+            IEnumerable<Usuario> usuDeQuien = new AssemblerUsuario().ConvertListENToModel(listSeguidosEn).ToList();
 
             SessionClose();
-            return View(Tuple.Create(usuDeQuien, usuActividad));
+            return View(Tuple.Create(usuDeQuien, seguidosDeSeguidos));
         }
     }
 }
